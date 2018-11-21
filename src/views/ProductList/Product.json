@@ -1,11 +1,12 @@
-{
+[
+    {
     "name": "Ziemniak",
     "category": "vegetables",
     "kcal": 100,
     "protein": 23,
     "fat": 25,
     "carbohydrates": 3
-}
+},
 {
     "name": "Truskawka",
     "category": "fruits",
@@ -13,7 +14,7 @@
     "protein": 24,
     "fat": 2,
     "carbohydrates": 12
-}
+},
 {
     "name": "Mielony",
     "category": "meat",
@@ -21,7 +22,7 @@
     "protein": 66,
     "fat": 55,
     "carbohydrates":9
-}
+},
 {
     "name": "Frytki",
     "category": "vegetables",
@@ -29,7 +30,7 @@
     "protein": 10,
     "fat": 200,
     "carbohydrates": 88
-}
+},
 {
     "name": "Kawa",
     "category": "drinks",
@@ -37,7 +38,7 @@
     "protein":0,
     "fat": 0,
     "carbohydrates": 0
-}
+},
 {
     "name": "Woda",
     "category": "drinks",
@@ -45,7 +46,7 @@
     "protein": 0,
     "fat": 0,
     "carbohydrates": 0
-}
+},
 {
     "name": "Jabłko",
     "category": "fruits",
@@ -53,7 +54,7 @@
     "protein": 15,
     "fat": 10,
     "carbohydrates": 4
-}
+},
 {
     "name": "Schabowy",
     "category": "meat",
@@ -61,7 +62,7 @@
     "protein": 200,
     "fat": 150,
     "carbohydrates": 2
-}
+},
 {
     "name": "Hamburger",
     "category": "meat",
@@ -69,7 +70,7 @@
     "protein": 342,
     "fat": 432,
     "carbohydrates": 130
-}
+},
 {
     "name": "Pomidor",
     "category": "vegetables",
@@ -78,3 +79,4 @@
     "fat": 0,
     "carbohydrates": 2
 }
+]

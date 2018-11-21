@@ -1,8 +1,16 @@
 import React from 'react'
+import data from './Product.json'
 
-const ProductList = () => (
-    <div>
-       <h1> Product List</h1>
-    </div>
-)
+class ProductList extends React.Component {
+    componentDidMount() {
+        console.log(data)
+      }
+    render() {
+        return (
+            <div>
+                {data.map((product)=><div>{product.name}</div>)}
+            </div>
+        )
+    }
+}
 export default ProductList
