@@ -1,12 +1,32 @@
 import React from 'react'
+import Button from './Button'
+import { Row, Col } from 'react-flexbox-grid'
 
-import MenuItem from 'material-ui/MenuItem';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+class Dashboard extends React.Component {
+
+  render() {
+    return (
+      <div>
+        <Row>
+          <Col lg={1}>        <Button
+          label={'s'}
+        /></Col>
+          <Col lg={1}><Button
+          label={'a'}
+        /></Col>
+          <Col lg={1}><Button
+          label={'a'}
+
+        /></Col>
+        </Row>
+
+        
+        
+      </div>
+
+    )
+  }
+}
 
 
-const Dashboard = (props) => (
-  <div>
-     <h1> Dashboard</h1>
-  </div>
-)
 export default Dashboard
