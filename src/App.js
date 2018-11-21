@@ -4,6 +4,7 @@ import Navbar from './Navigation/Navbar'
 import Product from './views/Product/Product'
 import FavouriteList from './views/FavouriteList/FavouriteList'
 import ProductList from './views/ProductList/ProductList'
+import AddProduct from './views/AddProduct/AddProduct'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import MenuItem from 'material-ui/MenuItem';
 
@@ -18,11 +19,6 @@ const App = (props) => (
             Dashboard
           </MenuItem>
           </Link>
-          <Link to='/product'>
-          <MenuItem>
-            Product
-          </MenuItem>
-          </Link>
           <Link to='/productlist'>
           <MenuItem>
             Product List
@@ -33,12 +29,18 @@ const App = (props) => (
             Favourite
           </MenuItem>
           </Link>
+          <Link to='/addproduct'>
+          <MenuItem>
+            Add Product
+          </MenuItem>
+          </Link>
         </Navbar>
         <div>
           <Route path="/" exact={true} component={DashboardView}></Route>
           <Route path="/product" component={Product}></Route>
           <Route path="/productlist" component={ProductList}></Route>
           <Route path="/favouritelist" component={FavouriteList}></Route>
+          <Route path="/addproduct" component={ProductList}></Route>
         </div>
       </div>
     </Router>
