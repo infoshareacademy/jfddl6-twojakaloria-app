@@ -1,26 +1,48 @@
-import React, { Component } from 'react';
+import React from 'react';
+import DashboardView from './views/DashboardView/DashboardView'
+import Navbar from './Navigation/Navbar'
+import Product from './views/Product/Product'
+import FavouriteList from './views/FavouriteList/FavouriteList'
+import ProductList from './views/ProductList/ProductList'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import MenuItem from 'material-ui/MenuItem';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-         
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+const App = (props) => (
+  <div>
+
+    <Router>
+      <div>
+        <Navbar>
+          <Link to='/'>
+          <MenuItem>
+            Dashboard
+          </MenuItem>
+          </Link>
+          <Link to='/product'>
+          <MenuItem>
+            Product
+          </MenuItem>
+          </Link>
+          <Link to='/productlist'>
+          <MenuItem>
+            Product List
+          </MenuItem>
+          </Link>
+          <Link to='/favouritelist'>
+          <MenuItem>
+            Favourite
+          </MenuItem>
+          </Link>
+        </Navbar>
+        <div>
+          <Route path="/" exact={true} component={DashboardView}></Route>
+          <Route path="/product" component={Product}></Route>
+          <Route path="/productlist" component={ProductList}></Route>
+          <Route path="/favouritelist" component={FavouriteList}></Route>
+        </div>
       </div>
-    );
-  }
-}
+    </Router>
+  </div>
+)
 
 export default App;
