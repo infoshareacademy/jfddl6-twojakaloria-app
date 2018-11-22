@@ -24,6 +24,18 @@ class AddProduct extends React.Component {
           <TextField hintText="Product name" />
         </div>
         <div>
+          <TextField hintText="Kcal" />
+        </div>
+        <div>
+          <TextField hintText="Protein" />
+        </div>
+        <div>
+          <TextField hintText="Fat" />
+        </div>
+        <div>
+          <TextField hintText="Carbohydrates" />
+        </div>
+        <div>
           <SelectField
             // multiple={true}
             hintText="Choose category"
