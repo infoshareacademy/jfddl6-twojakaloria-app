@@ -40,7 +40,7 @@ const App = (props) => (
           <Route path="/product" component={Product}></Route>
           <Route path="/productlist" component={ProductList}></Route>
           <Route path="/favouritelist" component={FavouriteList}></Route>
-          <Route path="/addproduct" component={ProductList}></Route>
+          <Route path="/addproduct" component={AddProduct}></Route>
         </div>
       </div>
     </Router>
