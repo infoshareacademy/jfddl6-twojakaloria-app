@@ -3,23 +3,32 @@ import { PieChart, Pie, Tooltip } from "recharts";
 const data = [
     {
         value: 15,
-        name: "Warzywa"
+        name: "Warzywa",
+        fill: "red"
     },
     {
         value: 10,
-        name: "Owoce"
+        name: "Owoce",
+        fill: "purple"
+
     },
     {
         value: 6,
-        name: "Mięso"
+        name: "Mięso",
+        fill: "blue"
+
     },
     {
         value: 3,
-        name: "Ryby"
+        name: "Ryby",
+        fill: "green"
+
     },
     {
         value: 12,
-        name: "Nabiał"
+        name: "Nabiał",
+        fill: "yellow"
+
     }
 
 ];
@@ -33,7 +42,7 @@ const Chart = (props) => (
                 props.viewportWidth / 2.5
         }
             height={500}>
-            <Pie data={data} dataKey="value" nameKey="name" fill="#8884d8" />
+            <Pie data={data} dataKey="value" nameKey="name"  />
             <Tooltip />
         </PieChart>
     </div>

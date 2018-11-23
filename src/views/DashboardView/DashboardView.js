@@ -4,8 +4,15 @@ import { Grid, Row, Col } from 'react-flexbox-grid'
 import { Link } from 'react-router-dom'
 import PieChart from './PieChart'
 import BarChart from './BarChart'
+import Paper from 'material-ui/Paper'
 
 
+const style = {
+  paper: {
+      margin: 12,
+      padding: 12
+  }
+}
 
 class Dashboard extends React.Component {
   state = {
@@ -28,7 +35,8 @@ class Dashboard extends React.Component {
 
   render() {
     return (
-      <div>
+      <Paper
+      style={style.paper}>
         <Grid>
           <Row middle="xs" center='xs'>
             <Col lg={4}>
@@ -70,7 +78,7 @@ class Dashboard extends React.Component {
             </Col>
           </Row>
         </Grid>
-      </div>
+      </Paper>
 
     )
   }

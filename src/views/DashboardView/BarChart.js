@@ -4,13 +4,19 @@ const data = [
     {
         time: "pon",
         users: 1,
+        fill: "red"
+
     },
     {
         time: "wt",
         users: 3,
+        fill: "blue"
+
     }, {
         time: "śr",
         users: 7,
+        fill: "yellow"
+
     }
 ]
 const Chart = (props) => (
@@ -28,7 +34,7 @@ const Chart = (props) => (
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="time" />
             <YAxis />
-            <Bar label={true} dataKey="users" fill="#8884d8" />
+            <Bar label={true} dataKey="users"  />
         </BarChart>
     </div>
 );
