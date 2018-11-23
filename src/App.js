@@ -10,23 +10,29 @@ import MenuItem from 'material-ui/MenuItem';
 
 const App = (props) => (
   <div>
-
     <Router>
       <div>
         <Navbar>
           <Link to='/'>
-          <MenuItem>
-            Dashboard
+            <MenuItem>
+              Dashboard
           </MenuItem>
           </Link>
+
+          <Link to='/product'>
+            <MenuItem>
+              Product
+          </MenuItem>
+          </Link>
+
           <Link to='/productlist'>
-          <MenuItem>
-            Product List
+            <MenuItem>
+              Product List
           </MenuItem>
           </Link>
           <Link to='/favouritelist'>
-          <MenuItem>
-            Favourite
+            <MenuItem>
+              Favourite
           </MenuItem>
           </Link>
           <Link to='/addproduct'>
