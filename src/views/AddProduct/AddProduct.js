@@ -7,6 +7,13 @@ import { Grid, Row, Col } from "react-flexbox-grid";
 
 const categories = ["Vegetables", "Fruits", "Drinks", "Meat", "Other"];
 
+const style = {
+  paper: {
+    margin: 12,
+    padding: 50
+  }
+}
+
 class AddProduct extends React.Component {
   state = {
     value: null
@@ -16,37 +23,51 @@ class AddProduct extends React.Component {
 
   render() {
     return (
-      <div>
+      <Paper
+        style={style.paper}
+      >
         <Grid fluid>
           <Row center="xs">
             <Col lg={12} />
             <h1>Add product</h1>
           </Row>
           <div>
-          <Paper>
               <div>
-              <Row>
+              <Row center="xs">
                 <Col lg={12} />
                 <TextField
                     hintText="Product name"
+                    fullWidth={true}
                  />
               </Row>
                     </div>
               <Row center="xs">
                 <Col lg={12} />
-                <TextField hintText="Product name" />
+                <TextField
+                    hintText="Kcal"
+                    fullWidth={true} 
+                />
               </Row>
               <Row center="xs">
                 <Col lg={12} />
-                <TextField hintText="Product name" />
+                <TextField
+                    hintText="Protein"
+                    fullWidth={true} 
+                />
               </Row>
               <Row center="xs">
                 <Col lg={12} />
-                <TextField hintText="Product name" />
+                <TextField
+                    hintText="Fat"
+                    fullWidth={true} 
+                />
               </Row>
               <Row center="xs">
                 <Col lg={12} />
-                <TextField hintText="Product name" />
+                <TextField
+                    hintText="Carbohydrates"
+                    fullWidth={true} 
+                />
               </Row>
               <Row center="xs">
                 <Col lg={12} />
@@ -55,6 +76,7 @@ class AddProduct extends React.Component {
                   hintText="Choose category"
                   value={this.state.value}
                   onChange={this.handleChange}
+                  fullWidth={true}
                 >
                   {categories.map(category => (
                     <MenuItem
@@ -66,10 +88,9 @@ class AddProduct extends React.Component {
                   ))}
                 </SelectField>
               </Row>
-          </Paper>
             </div>
         </Grid>
-      </div>
+      </Paper>
     );
   }
 }
