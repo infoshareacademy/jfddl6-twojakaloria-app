@@ -3,6 +3,7 @@ import TextField from "material-ui/TextField";
 import SelectField from "material-ui/SelectField";
 import MenuItem from "material-ui/MenuItem";
 import Paper from "material-ui/Paper";
+import RaisedButton from 'material-ui/RaisedButton';
 import { Grid, Row, Col } from "react-flexbox-grid";
 
 const categories = ["Vegetables", "Fruits", "Drinks", "Meat", "Other"];
@@ -11,6 +12,9 @@ const style = {
   paper: {
     margin: 12,
     padding: 50
+  },
+  button: {
+    marginTop: 50
   }
 }
 
@@ -71,6 +75,13 @@ class AddProduct extends React.Component {
               </Row>
               <Row center="xs">
                 <Col lg={12} />
+                <TextField
+                    hintText="Photo url"
+                    fullWidth={true} 
+                />
+              </Row>
+              <Row center="xs">
+                <Col lg={12} />
                 <SelectField
                   // multiple={true}
                   hintText="Choose category"
@@ -87,6 +98,14 @@ class AddProduct extends React.Component {
                     />
                   ))}
                 </SelectField>
+              </Row>
+              <Row center="xs">
+                    <RaisedButton
+                        label='Save'
+                        primary={true}
+                        fullWidth={true}
+                        style={style.button}
+                    />
               </Row>
             </div>
         </Grid>
