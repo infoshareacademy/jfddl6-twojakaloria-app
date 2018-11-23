@@ -1,0 +1,4 @@
+/* @HACK */
+.AddProduct__select-field-container > div > div > div {
+  text-align: left;
+}
