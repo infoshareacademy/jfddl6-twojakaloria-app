@@ -4,7 +4,6 @@ import Navbar from './Navigation/Navbar'
 import Product from './views/Product/Product'
 import FavouriteList from './views/FavouriteList/FavouriteList'
 import ProductList from './views/ProductList/ProductList'
-import AddProduct from './views/AddProduct/AddProduct'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import MenuItem from 'material-ui/MenuItem';
 

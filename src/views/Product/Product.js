@@ -6,7 +6,9 @@ import { database } from '../../firebase'
 
 
 class Product extends React.Component {
-
+    state = {
+        data: null
+    }
 
     componentDidMount() {
         let key = this.props.match.params.key;
@@ -26,7 +28,12 @@ class Product extends React.Component {
                 <Paper>
 
                     <h1>{this.props.match.params.key}</h1>
-                    <h1>{this.state.data.carbohydrates}</h1>
+                    <h1>Carbo: {this.state.data && this.state.data.carbohydrates}</h1>
+                    <h1>category: {this.state.data && this.state.data.category}</h1>
+                    <h1>Carbo: {this.state.data && this.state.data.carbohydrates}</h1>
+                    <h1>Carbo: {this.state.data && this.state.data.carbohydrates}</h1>
+                    <h1>Carbo: {this.state.data && this.state.data.carbohydrates}</h1>
+                    <h1>Carbo: {this.state.data && this.state.data.carbohydrates}</h1>
 
 
                 </Paper>
