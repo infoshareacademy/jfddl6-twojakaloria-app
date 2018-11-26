@@ -1,5 +1,5 @@
 import React from 'react'
-import TaskField from '../Input/Input'
+import TaskField from '../Elements/Input'
 import ItemSearch from './SearchMethod'
 import Paper from 'material-ui/Paper'
 
@@ -20,6 +20,7 @@ class Search extends React.Component {
                 <TaskField
                     hintText='Search'
                     value={this.state.text}
+                    fullWidth={true}
                     onChange={(event) => this.setState({ text: event.target.value })}
                 />
                 <ItemSearch

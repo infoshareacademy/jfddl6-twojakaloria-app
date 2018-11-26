@@ -5,6 +5,7 @@ const Input = (props) => (
     <TextField 
         hintText={props.hintText}
         value={props.value}
+        fullWidth={props.fullWidth}
         onChange={props.onChange}
     />
 )
