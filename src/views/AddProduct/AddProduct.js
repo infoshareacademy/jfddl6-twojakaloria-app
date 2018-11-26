@@ -35,39 +35,31 @@ class AddProduct extends React.Component {
       <Paper style={style.paper}>
         <Grid fluid>
           <Row center="xs">
-            <Col lg={12} />
             <h1>Add product</h1>
           </Row>
           <div>
             <div>
               <Row center="xs">
-                <Col lg={12} />
                 <TextField hintText="Product name" fullWidth={true} />
               </Row>
             </div>
             <Row center="xs">
-              <Col lg={12} />
               <TextField hintText="Kcal" fullWidth={true} />
             </Row>
             <Row center="xs">
-              <Col lg={12} />
               <TextField hintText="Protein" fullWidth={true} />
             </Row>
             <Row center="xs">
-              <Col lg={12} />
               <TextField hintText="Fat" fullWidth={true} />
             </Row>
             <Row center="xs">
-              <Col lg={12} />
               <TextField hintText="Carbohydrates" fullWidth={true} />
             </Row>
             <Row center="xs">
-              <Col lg={12} />
               <TextField hintText="Photo url" fullWidth={true} />
             </Row>
             <div className="AddProduct__select-field-container">
               <Row center="xs">
-                <Col lg={12}>
                   <SelectField
                     // multiple={true}
                     hintText="Choose category"
@@ -85,7 +77,6 @@ class AddProduct extends React.Component {
                       />
                     ))}
                   </SelectField>
-                </Col>
               </Row>
             </div>
             <Row center="xs">
