@@ -59,7 +59,7 @@ class Product extends React.Component {
                             <h3>Protein: {this.state.data && this.state.data.protein}</h3>
                         </Col>
                         <Col lg={6}>
-
+                            <img src={this.state.data && this.state.data.url} />
 
                         </Col>
                     </Row>
