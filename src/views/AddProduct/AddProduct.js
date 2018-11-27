@@ -31,7 +31,7 @@ const initialState = {
   fat: '',
   carbohydrates: '',
   url: '',
-  isFavourite: false
+  isFavorite: false
 };
 class AddProduct extends React.Component {
 

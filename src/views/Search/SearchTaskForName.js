@@ -4,7 +4,6 @@ import ActionFavorite from 'material-ui/svg-icons/action/favorite';
 import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
 import IconButton from 'material-ui/IconButton'
 import DeleteIcon from 'material-ui/svg-icons/action/delete'
-import Checkbox from 'material-ui/Checkbox';
 
 
 const API_URL = 'https://twoja-kaloria.firebaseio.com/products'
@@ -36,10 +35,10 @@ class Task extends React.Component {
             method: 'DELETE'
         }).then(() => this.loadData())
     }
-    isFavourite = (task) => {
+    isFavorite = (task) => {
         fetch(`${API_URL}/${task.id}/.json`, {
             method: 'PATCH',
-            body: JSON.stringify({ isFavourite: !task.isFavourite })
+            body: JSON.stringify({ isFavorite: !task.isFavorite })
         }
         ).then(() => this.loadData())
     }
@@ -58,9 +57,9 @@ class Task extends React.Component {
                                 />
                             </IconButton>
                             <IconButton
-                                onClick={() => this.isFavourite(product)}
+                                onClick={() => this.isFavorite(product)}
                             >
-                                {product.isFavourite === true ?
+                                {product.isFavorite === true ?
                                     <ActionFavorite />
                                     :
                                     <ActionFavoriteBorder />
