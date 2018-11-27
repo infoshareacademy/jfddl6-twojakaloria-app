@@ -12,7 +12,7 @@ class Task extends React.Component {
     state = {
         tasks: []
     }
-    componentWillMount() {
+    componentWillMount = () =>{
         this.loadData()
     }
     loadData() {
@@ -31,17 +31,17 @@ class Task extends React.Component {
                 this.setState({ tasks: tasksList })
             })
     }
-    deleteHandler(id) {
+    deleteHandler = (id) => {
         fetch(`${API_URL}/${id}.json`, {
             method: 'DELETE'
-        }).then(this.loadData())
+        }).then(() => this.loadData())
     }
-    isFavourite(task) {
+    isFavourite = (task) => {
         fetch(`${API_URL}/${task.id}/.json`, {
             method: 'PATCH',
             body: JSON.stringify({ isFavourite: !task.isFavourite })
         }
-        ).then(this.loadData())
+        ).then(() => this.loadData())
     }
     render() {
         return (
