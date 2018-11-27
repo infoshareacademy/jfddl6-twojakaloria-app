@@ -24,16 +24,26 @@ const style = {
   }
 };
 
+const initialState = {
+  name: '',
+  category: null,
+  kcal: null,
+  protein: null,
+  fat: null,
+  carbohydrates: null,
+  url: '',
+  isFavourite: false
+};
 class AddProduct extends React.Component {
-  state = {
-    name: '',
-    category: null,
-    kcal: null,
-    protein: null,
-    fat: null,
-    carbohydrates: null,
-    url: ''
-  };
+
+  constructor(props) {
+    super(props)
+    this.state = initialState
+  }
+
+  reset() {
+    this.setState(initialState)
+  }
 
   handleChange = (event, index, value) => this.setState({ category: value });
 
@@ -43,6 +53,17 @@ class AddProduct extends React.Component {
   fatHandler = (event) => this.setState({fat : event.target.value})
   carboHandler = (event) => this.setState({carbohydrates : event.target.value})
   urlHandler = (event) => this.setState({url : event.target.value})
+
+  handleClick = (event) => {
+    if (this.state.name !== '') {
+      let product = this.state
+      fetch('https://twoja-kaloria.firebaseio.com/products.json', {
+        method: 'POST',
+        body: JSON.stringify(product)
+      })
+    }
+    this.reset()
+  }
 
   render() {
     return (
@@ -129,6 +150,7 @@ class AddProduct extends React.Component {
                 primary={true}
                 fullWidth={true}
                 style={style.button}
+                onClick={this.handleClick}
               />
             </Row>
           </div>
