@@ -5,7 +5,6 @@ import MenuItem from "material-ui/MenuItem";
 import Paper from "material-ui/Paper";
 import RaisedButton from "material-ui/RaisedButton";
 import { Grid, Row } from "react-flexbox-grid";
-import {database} from '../../firebase'
 
 import './AddProduct.css'
 
@@ -50,6 +49,7 @@ class AddProduct extends React.Component {
   makeTextFieldHandler = fieldName => event => this.setState({ [fieldName]: event.target.value })
 
   handleClick = (event) => {
+    this.props.toggleStatement('dupa dupa')
     if (this.state.name !== '') {
       let product = this.state
       fetch('https://twoja-kaloria.firebaseio.com/products.json', {
