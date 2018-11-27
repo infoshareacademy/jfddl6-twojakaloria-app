@@ -49,8 +49,9 @@ class AddProduct extends React.Component {
   makeTextFieldHandler = fieldName => event => this.setState({ [fieldName]: event.target.value })
 
   handleClick = (event) => {
-    this.props.toggleStatement('dupa dupa')
+    this.props.toggleStatement('Something went wrong. Please try again!')
     if (this.state.name !== '') {
+      this.props.toggleStatement('Product was added successfully!')
       let product = this.state
       fetch('https://twoja-kaloria.firebaseio.com/products.json', {
         method: 'POST',
