@@ -4,42 +4,68 @@ import ActionFavorite from 'material-ui/svg-icons/action/favorite';
 import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
 import IconButton from 'material-ui/IconButton'
 import DeleteIcon from 'material-ui/svg-icons/action/delete'
-import data from '../ProductList/Product'
-import { unifyString } from './unify'
 
-const SearchTask = (props) => (
-    data
-        .filter((product) => unifyString(product.name)
-            .includes(
-                unifyString(props.name)))
-        .filter((product) => props.kcal!=-1? (product.kcal <= props.kcal):product)
-        .filter((product) => (unifyString(product.category)
-            .includes(
-                unifyString(props.category))))
-        .map((product) => (
-            <ListItem
-                key={product.name}
-                primaryText={product.name}
-                rightIconButton={
-                    <div>
-                        <IconButton>
-                            <DeleteIcon
-                            // onClick={() => props.deleteTask(props.task.key)}
-                            />
-                        </IconButton>
-                        <IconButton>
-                            {product.favorites === true ?
-                                <ActionFavorite
-                                    onClick={() => { }}
-                                />
-                                :
-                                <ActionFavoriteBorder
-                                    onClick={() => { }} />}
-                        </IconButton>
-                    </div>
+
+const API_URL = 'https://twoja-kaloria.firebaseio.com/products'
+class Task extends React.Component {
+    state = {
+        tasks: []
+    }
+    componentWillMount() {
+        this.loadData()
+    }
+    loadData() {
+        fetch(`${API_URL}.json`)
+            .then(response => response.json())
+            .then(data => {
+                if (!data) {
+                    this.setState({ tasks: [] })
+                    return;
                 }
-            />
-        ))
-)
+                const array = Object.entries(data)
+                const tasksList = array.map(([id, values]) => {
+                    values.id = id
+                    return values
+                })
+                this.setState({ tasks: tasksList })
+            })
+    }
+    deleteHandler(id){
+        fetch(`${API_URL}/${id}.json`,{
+            method: 'DELETE'})
+            .then(this.loadData())
+    }
+    render() {
+        return (
+            <div>
+                {console.log(this.state.tasks)}
+                {this.state.tasks.map((product) => (
+                    <ListItem
+                        key={product.name}
+                        primaryText={product.name}
+                        rightIconButton={
+                            <div>
+                                <IconButton>
+                                    <DeleteIcon
+                                     onClick={() => this.deleteHandler(product.id)}
+                                    />
+                                </IconButton>
+                                <IconButton>
+                                    {product.favorites === true ?
+                                        <ActionFavorite
+                                            onClick={() =>{} }
+                                        />
+                                        :
+                                        <ActionFavoriteBorder
+                                            onClick={() => { }} />}
+                                </IconButton>
+                            </div>
+                        }
+                    />
+                ))
+                }
+            </div>)
+    }
+}
 
-export default SearchTask
+export default Task
