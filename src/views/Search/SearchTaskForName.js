@@ -5,13 +5,12 @@ import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
 import IconButton from 'material-ui/IconButton'
 import DeleteIcon from 'material-ui/svg-icons/action/delete'
 
-
 const API_URL = 'https://twoja-kaloria.firebaseio.com/products'
 class Task extends React.Component {
     state = {
         tasks: []
     }
-    componentWillMount = () =>{
+    componentWillMount = () => {
         this.loadData()
     }
     loadData() {
@@ -44,7 +43,6 @@ class Task extends React.Component {
     }
     render() {
         return (
-
             this.state.tasks.map((product) => (
                 <ListItem
                     key={product.name}
@@ -68,8 +66,8 @@ class Task extends React.Component {
                         </div>
                     }
                 />
-            ))
-
+            )
+            )
         )
     }
 }

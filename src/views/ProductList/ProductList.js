@@ -5,7 +5,6 @@ import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
 import IconButton from 'material-ui/IconButton'
 import DeleteIcon from 'material-ui/svg-icons/action/delete'
 import Paper from 'material-ui/Paper'
-import data from './Product'
 
 const styles = {
     paper: {
@@ -13,36 +12,72 @@ const styles = {
         padding: 30
     }
 }
-const ProductList = () => (
-    <Paper style={styles.paper}>
-        {data
-            .map((product) => (
-                <ListItem
-                    key={product.name}
-                    primaryText={product.name}
-                    rightIconButton={
-                        <div>
-                            <IconButton>
-                                <DeleteIcon
-                                onClick={() =>{}}
-                                />
-                            </IconButton>
-                            <IconButton>
-                                {product.favorites === true ?
-                                    <ActionFavorite
-                                        onClick={() => { }}
+const API_URL = 'https://twoja-kaloria.firebaseio.com/products'
+class ProductList extends React.Component {
+    state = {
+        tasks: []
+    }
+    componentWillMount = () => {
+        this.loadData()
+    }
+    loadData = () => {
+        fetch(`${API_URL}.json`)
+            .then(response => response.json())
+            .then(data => {
+                if (!data) {
+                    this.setState({ tasks: [] })
+                    return;
+                }
+                const array = Object.entries(data)
+                const tasksList = array.map(([id, values]) => {
+                    values.id = id
+                    return values
+                })
+                this.setState({ tasks: tasksList })
+            })
+    }
+    isFavorite = (product) => {
+        fetch(`${API_URL}/${product.id}.json`, {
+            method: 'PATCH',
+            body: JSON.stringify({ isFavorite: !product.isFavorite })
+        }).then(() => this.loadData())
+    }
+    deleteTask = (task)=>{
+        fetch(`${API_URL}/${task.id}.json`, {
+            method: 'DELETE'
+        }).then(()=>this.loadData())
+    }
+    render() {
+        return (
+            <Paper style={styles.paper}>
+                {this.state.tasks.map((product) => (
+                    <ListItem
+                        key={product.name}
+                        primaryText={product.name}
+                        rightIconButton={
+                            <div>
+                                <IconButton>
+                                    <DeleteIcon
+                                        onClick={() => this.deleteTask(product)}
                                     />
-                                    :
-                                    <ActionFavoriteBorder
-                                        onClick={() => { }} />}
-                            </IconButton>
-                        </div>
-                    }
-                />
-            )
-            )
-        }
-    </Paper>
-)
+                                </IconButton>
+                                <IconButton
+                                    onClick={() => this.isFavorite(product)}>
+                                    {product.isFavorite === true ?
+                                        <ActionFavorite />
+                                        :
+                                        <ActionFavoriteBorder />
+                                    }
+                                </IconButton>
+                            </div>
+                        }
+                    />
+                )
+                )
+                }
+            </Paper>
+        )
+    }
+}
 
 export default ProductList
