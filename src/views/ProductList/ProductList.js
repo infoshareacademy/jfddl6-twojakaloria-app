@@ -24,7 +24,7 @@ const ProductList = () => (
                         <div>
                             <IconButton>
                                 <DeleteIcon
-                                // onClick={() => props.deleteTask(props.task.key)}
+                                onClick={() =>{}}
                                 />
                             </IconButton>
                             <IconButton>
