@@ -4,8 +4,11 @@ import ActionFavorite from 'material-ui/svg-icons/action/favorite';
 import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
 import IconButton from 'material-ui/IconButton'
 import DeleteIcon from 'material-ui/svg-icons/action/delete'
+import DetailsIcon from 'material-ui/svg-icons/action/assignment'
+import {unifyString} from './unify'
 
 const API_URL = 'https://twoja-kaloria.firebaseio.com/products'
+
 class Task extends React.Component {
     state = {
         tasks: []
@@ -43,12 +46,24 @@ class Task extends React.Component {
     }
     render() {
         return (
-            this.state.tasks.map((product) => (
+        //    < // .filter((product) => unifyString(product.name)
+        //     //     .includes(
+        //     //         unifyString(props.name)))
+        //     // .filter((product) => props.kcal != -1 ? (product.kcal <= props.kcal) : product)
+        //     // .filter((product) => (unifyString(product.category)
+        //     //     .includes(
+        //     //         unifyString(props.category))))
+        //     />
+        this.state.tasks.map((product) => (
                 <ListItem
                     key={product.name}
                     primaryText={product.name}
                     rightIconButton={
                         <div>
+                            <IconButton>
+                                <DetailsIcon
+                                    onClick={() => { }} />
+                            </IconButton>
                             <IconButton>
                                 <DeleteIcon
                                     onClick={() => this.deleteHandler(product.id)}
@@ -68,7 +83,7 @@ class Task extends React.Component {
                 />
             )
             )
-        )
+            )
     }
 }
 

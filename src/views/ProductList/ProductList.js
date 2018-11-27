@@ -4,6 +4,7 @@ import ActionFavorite from 'material-ui/svg-icons/action/favorite';
 import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
 import IconButton from 'material-ui/IconButton'
 import DeleteIcon from 'material-ui/svg-icons/action/delete'
+import DetailsIcon from 'material-ui/svg-icons/action/assignment'
 import Paper from 'material-ui/Paper'
 
 const styles = {
@@ -42,10 +43,10 @@ class ProductList extends React.Component {
             body: JSON.stringify({ isFavorite: !product.isFavorite })
         }).then(() => this.loadData())
     }
-    deleteTask = (task)=>{
+    deleteTask = (task) => {
         fetch(`${API_URL}/${task.id}.json`, {
             method: 'DELETE'
-        }).then(()=>this.loadData())
+        }).then(() => this.loadData())
     }
     render() {
         return (
@@ -56,6 +57,10 @@ class ProductList extends React.Component {
                         primaryText={product.name}
                         rightIconButton={
                             <div>
+                                <IconButton>
+                                    <DetailsIcon 
+                                    onClick={()=>{}}/>
+                                </IconButton>
                                 <IconButton>
                                     <DeleteIcon
                                         onClick={() => this.deleteTask(product)}

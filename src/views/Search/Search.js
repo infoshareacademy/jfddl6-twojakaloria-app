@@ -1,6 +1,6 @@
 import React from 'react'
 import TaskField from '../Elements/Input'
-import ItemSearch from './SearchTaskForName'
+import ItemSearch from './SearchTask'
 import Paper from 'material-ui/Paper'
 import Slider from '../Elements/Slider'
 
