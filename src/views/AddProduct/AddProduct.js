@@ -49,13 +49,6 @@ class AddProduct extends React.Component {
 
   makeTextFieldHandler = fieldName => event => this.setState({ [fieldName]: event.target.value })
 
-  nameHandler = (event) => this.setState({ name: event.target.value})
-  kcalHandler = (event) => this.setState({kcal : parseInt(event.target.value)})
-  proteinHandler = (event) => this.setState({protein :  parseInt(event.target.value)})
-  fatHandler = (event) => this.setState({fat :  parseInt(event.target.value)})
-  carboHandler = (event) => this.setState({carbohydrates :  parseInt(event.target.value)})
-  urlHandler = (event) => this.setState({url : event.target.value})
-
   handleClick = (event) => {
     if (this.state.name !== '') {
       let product = this.state
