@@ -26,11 +26,11 @@ const style = {
 
 const initialState = {
   name: '',
-  category: null,
-  kcal: null,
-  protein: null,
-  fat: null,
-  carbohydrates: null,
+  category: '',
+  kcal: '',
+  protein: '',
+  fat: '',
+  carbohydrates: '',
   url: '',
   isFavourite: false
 };
@@ -47,11 +47,13 @@ class AddProduct extends React.Component {
 
   handleChange = (event, index, value) => this.setState({ category: value });
 
+  makeTextFieldHandler = fieldName => event => this.setState({ [fieldName]: event.target.value })
+
   nameHandler = (event) => this.setState({ name: event.target.value})
-  kcalHandler = (event) => this.setState({kcal : event.target.value})
-  proteinHandler = (event) => this.setState({protein : event.target.value})
-  fatHandler = (event) => this.setState({fat : event.target.value})
-  carboHandler = (event) => this.setState({carbohydrates : event.target.value})
+  kcalHandler = (event) => this.setState({kcal : parseInt(event.target.value)})
+  proteinHandler = (event) => this.setState({protein :  parseInt(event.target.value)})
+  fatHandler = (event) => this.setState({fat :  parseInt(event.target.value)})
+  carboHandler = (event) => this.setState({carbohydrates :  parseInt(event.target.value)})
   urlHandler = (event) => this.setState({url : event.target.value})
 
   handleClick = (event) => {
@@ -79,40 +81,44 @@ class AddProduct extends React.Component {
                   hintText="Product name"
                   fullWidth={true}
                   value={this.state.name}
-                  onChange={this.nameHandler}
+                  onChange={this.makeTextFieldHandler('name')}
                   />
               </Row>
             </div>
             <Row center="xs">
               <TextField
+                type="number"
                  hintText="Kcal"
                  fullWidth={true}
                  value={this.state.kcal}
-                 onChange={this.kcalHandler}
+                 onChange={this.makeTextFieldHandler('kcal')}
                  />
             </Row>
             <Row center="xs">
               <TextField
+                type="number"
                  hintText="Protein"
                  fullWidth={true}
                  value={this.state.protein}
-                 onChange={this.proteinHandler}
+                 onChange={this.makeTextFieldHandler('protein')}
                  />
             </Row>
             <Row center="xs">
               <TextField 
+              type="number"
                 hintText="Fat"
                 fullWidth={true}
                 value={this.state.fat}
-                onChange={this.fatHandler}
+                onChange={this.makeTextFieldHandler('fat')}
                />
             </Row>
             <Row center="xs">
               <TextField 
+              type="number"
                 hintText="Carbohydrates" 
                 fullWidth={true}
                 value={this.state.carbohydrates}
-                onChange={this.carboHandler}
+                onChange={this.makeTextFieldHandler('carbohydrates')}
                />
             </Row>
             <Row center="xs">
@@ -120,7 +126,7 @@ class AddProduct extends React.Component {
                 hintText="Photo url" 
                 fullWidth={true} 
                 value={this.state.url}
-                onChange={this.urlHandler}
+                onChange={this.makeTextFieldHandler('url')}
               />
             </Row>
             <div className="AddProduct__select-field-container">
