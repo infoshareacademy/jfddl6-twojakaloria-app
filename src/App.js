@@ -7,6 +7,7 @@ import DashboardView from './views/DashboardView/DashboardView'
 import Product from './views/Product/Product'
 import FavouriteList from './views/FavouriteList/FavouriteList'
 import ProductList from './views/ProductList/ProductList'
+import Search from './views/Search/Search'
 import AddProduct from './views/AddProduct/AddProduct'
 import Statement from './componenets/Statement'
 
@@ -17,10 +18,10 @@ class App extends React.Component {
     statementMessage: ''
   }
 
-  toggleStatement = (message) => this.setState({ 
+  toggleStatement = (message) => this.setState({
     isStatementOpen: !this.state.isStatementOpen,
     statementMessage: message || ''
-   })
+  })
 
   render() {
     return (
@@ -49,13 +50,19 @@ class App extends React.Component {
                   Add Product
           </MenuItem>
               </Link>
+              <Link to='/search'>
+                <MenuItem>
+                  Search
+          </MenuItem>
+              </Link>
             </Navbar>
             <div>
               <Route path="/" exact={true} component={DashboardView}></Route>
               <Route path="/product" component={Product}></Route>
               <Route path="/productlist" component={ProductList}></Route>
               <Route path="/favouritelist" component={FavouriteList}></Route>
-              <Route path="/addproduct" component={() => <AddProduct toggleStatement={this.toggleStatement}/>}></Route>
+              <Route path="/addproduct" component={() => <AddProduct toggleStatement={this.toggleStatement} />}></Route>
+              <Route path='/search' component={Search}></Route>
             </div>
           </div>
         </Router>
