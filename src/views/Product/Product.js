@@ -37,7 +37,6 @@ class Product extends React.Component {
     }
 
     resizeListener = () => {
-        console.log(window.innerWidth)
         this.setState({
             viewportWidth: window.innerWidth
         })
@@ -54,14 +53,15 @@ class Product extends React.Component {
                             <h1>Category: {this.state.data && this.state.data.category}</h1>
                             <h2>Name: {this.state.data && this.state.data.name}</h2>
                             <h3>Kcal: {this.state.data && this.state.data.kcal}</h3>
-                            <h3>Fat: {this.state.data && this.state.data.fat}</h3>
-                            <h3>Carbo: {this.state.data && this.state.data.carbohydrates}</h3>
-                            <h3>Protein: {this.state.data && this.state.data.protein}</h3>
+                            <h3>Fat: {this.state.data && this.state.data.fat} g</h3>
+                            <h3>Carbo: {this.state.data && this.state.data.carbohydrates} g</h3>
+                            <h3>Protein: {this.state.data && this.state.data.protein} g</h3>
+
                         </Col>
                         <Col lg={6}>
-                            <img 
-                            style={{maxWidth: '100%'}}
-                            src={this.state.data && this.state.data.url} 
+                            <img
+                                style={{ maxWidth: '100%' }}
+                                src={this.state.data && this.state.data.url}
                             />
 
                         </Col>
@@ -74,18 +74,18 @@ class Product extends React.Component {
                                     viewportWidth={this.state.viewportWidth}
 
                                     data={[{
-                                        value: this.state.data && this.state.data.carbohydrates,
+                                        value: this.state.data && Number(this.state.data.carbohydrates),
                                         name: "Carbo",
                                         fill: "red"
                                     },
                                     {
-                                        value: this.state.data && this.state.data.protein,
+                                        value: this.state.data && Number(this.state.data.protein),
                                         name: "Protein",
                                         fill: "purple"
 
                                     },
                                     {
-                                        value: this.state.data && this.state.data.fat,
+                                        value: this.state.data && Number(this.state.data.fat),
                                         name: "Fat",
                                         fill: "yellow"
 
