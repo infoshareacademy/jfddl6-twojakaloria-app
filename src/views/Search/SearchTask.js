@@ -5,7 +5,7 @@ import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
 import IconButton from 'material-ui/IconButton'
 import DeleteIcon from 'material-ui/svg-icons/action/delete'
 import DetailsIcon from 'material-ui/svg-icons/action/assignment'
-import {unifyString} from './unify'
+import { unifyString } from './unify'
 
 const API_URL = 'https://twoja-kaloria.firebaseio.com/products'
 
@@ -46,44 +46,44 @@ class Task extends React.Component {
     }
     render() {
         return (
-        //    < // .filter((product) => unifyString(product.name)
-        //     //     .includes(
-        //     //         unifyString(props.name)))
-        //     // .filter((product) => props.kcal != -1 ? (product.kcal <= props.kcal) : product)
-        //     // .filter((product) => (unifyString(product.category)
-        //     //     .includes(
-        //     //         unifyString(props.category))))
-        //     />
-        this.state.tasks.map((product) => (
-                <ListItem
-                    key={product.name}
-                    primaryText={product.name}
-                    rightIconButton={
-                        <div>
-                            <IconButton>
-                                <DetailsIcon
-                                    onClick={() => { }} />
-                            </IconButton>
-                            <IconButton>
-                                <DeleteIcon
-                                    onClick={() => this.deleteHandler(product.id)}
-                                />
-                            </IconButton>
-                            <IconButton
-                                onClick={() => this.isFavorite(product)}
-                            >
-                                {product.isFavorite === true ?
-                                    <ActionFavorite />
-                                    :
-                                    <ActionFavoriteBorder />
-                                }
-                            </IconButton>
-                        </div>
-                    }
-                />
-            )
-            )
-            )
+            this.state.tasks
+                .filter((product) => unifyString(product.name)
+                    .includes(
+                        unifyString(this.props.name)))
+                .filter((product) => this.props.kcal != -1 ? (product.kcal <= this.props.kcal) : product)
+                .filter((product) => (unifyString(product.category)
+                    .includes(
+                        unifyString(this.props.category))))
+                .map((product) => (
+                    <ListItem
+                        key={product.name}
+                        primaryText={product.name}
+                        rightIconButton={
+                            <div>
+                                <IconButton>
+                                    <DetailsIcon
+                                        onClick={() => { }} />
+                                </IconButton>
+                                <IconButton>
+                                    <DeleteIcon
+                                        onClick={() => this.deleteHandler(product.id)}
+                                    />
+                                </IconButton>
+                                <IconButton
+                                    onClick={() => this.isFavorite(product)}
+                                >
+                                    {product.isFavorite === true ?
+                                        <ActionFavorite />
+                                        :
+                                        <ActionFavoriteBorder />
+                                    }
+                                </IconButton>
+                            </div>
+                        }
+                    />
+                )
+                )
+        )
     }
 }
 
