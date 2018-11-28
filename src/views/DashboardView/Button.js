@@ -11,7 +11,7 @@ const Button = (props) => (
             primary={true}
             style={style}
             onClick={props.onClick}
-
+            fullWidth={props.fullWidth}
         />
     </div>
 )

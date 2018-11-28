@@ -2,7 +2,7 @@ import React from 'react'
 import Button from './Button'
 import { Grid, Row, Col } from 'react-flexbox-grid'
 import { Link } from 'react-router-dom'
-import PieChart from './PieChart'
+import PieChart from '../../components/PieChart'
 import BarChart from './BarChart'
 import Paper from 'material-ui/Paper'
 
