@@ -60,7 +60,7 @@ class App extends React.Component {
             </Navbar>
             <div>
               <Route path="/" exact={true} component={DashboardView}></Route>
-          <Route path="/product/:key" component={Product}></Route>
+              <Route path="/product/:key" component={Product}></Route>
               <Route path="/productlist" component={ProductList}></Route>
               <Route path="/favouritelist" component={FavouriteList}></Route>
               <Route path="/addproduct" component={() => <AddProduct toggleStatement={this.toggleStatement} />}></Route>
