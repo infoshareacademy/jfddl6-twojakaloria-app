@@ -3,6 +3,8 @@ import TaskField from '../Elements/Input'
 import ItemSearch from './SearchTask'
 import Paper from 'material-ui/Paper'
 import Slider from '../Elements/Slider'
+import SelectField from 'material-ui/SelectField'
+import MenuItem from 'material-ui/MenuItem';
 
 const style = {
     paper: {
@@ -16,14 +18,14 @@ class Search extends React.Component {
         text: '',
         slider: -1,
         sliderText: 'All',
-        category: ''
+        category: '',
+        value: ''
     }
 
     handleSlider = (event, value) => {
         this.setState({ slider: value });
     }
-
-
+    handleChange = (event, index, value) => this.setState({ category: value });
 
     render() {
         const handleText = (
@@ -53,12 +55,42 @@ class Search extends React.Component {
                         {handleText}
                     </span>
                 </p>
-                <TaskField
+                <SelectField
+                    value={this.state.category}
+                    onChange={this.handleChange}
+                >
+                    <MenuItem
+                        key={"Vegetables"}
+                        value={"Vegetables"}
+                        primaryText={"Vegetables"}
+                    />
+                    <MenuItem
+                        key={"Fruits"}
+                        value={"Fruits"}
+                        primaryText={"Fruits"}
+                    />
+                    <MenuItem
+                        key={"Drinks"}
+                        value={"Drinks"}
+                        primaryText={"Drinks"}
+                    />
+                    <MenuItem
+                        key={"Meat"}
+                        value={"Meat"}
+                        primaryText={"Meat"}
+                    />
+                    <MenuItem
+                        key={"Other"}
+                        value={"Other"}
+                        primaryText={"Other"}
+                    />
+                </SelectField>
+                {/* <TaskField
                     hintText='Category'
                     value={this.state.category}
                     fullWidth={true}
                     onChange={(event) => this.setState({ category: event.target.value })}
-                />
+                /> */}
                 <ItemSearch
                     name={this.state.text}
                     kcal={this.state.slider}
