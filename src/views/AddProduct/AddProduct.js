@@ -7,6 +7,7 @@ import RaisedButton from "material-ui/RaisedButton";
 import { Grid, Row } from "react-flexbox-grid";
 
 import './AddProduct.css'
+import { parse } from "querystring";
 
 const categories = ["Vegetables", "Fruits", "Drinks", "Meat", "Other"];
 
@@ -48,17 +49,22 @@ class AddProduct extends React.Component {
 
   makeTextFieldHandler = fieldName => event => this.setState({ [fieldName]: event.target.value })
 
+  sendToFirebase = () => {
+    let product = this.state
+    fetch('https://twoja-kaloria.firebaseio.com/products.json', {
+      method: 'POST',
+      body: JSON.stringify(product)
+    })
+  }
+
   handleClick = (event) => {
-    this.props.toggleStatement('Something went wrong. Please try again!')
-    if (this.state.name !== '') {
+    if (this.state.name !== '' && this.state.name.length < 30 && this.state.kcal !== '' && this.state.category !== '') {
       this.props.toggleStatement('Product was added successfully!')
-      let product = this.state
-      fetch('https://twoja-kaloria.firebaseio.com/products.json', {
-        method: 'POST',
-        body: JSON.stringify(product)
-      })
+      this.sendToFirebase()
+      this.reset()
+    }  else {
+      this.props.toggleStatement('Something went wrong! Please try again! :)')
     }
-    this.reset()
   }
 
   render() {
@@ -91,7 +97,7 @@ class AddProduct extends React.Component {
             <Row center="xs">
               <TextField
                 type="number"
-                 hintText="Protein"
+                 hintText="Protein in grams"
                  fullWidth={true}
                  value={this.state.protein}
                  onChange={this.makeTextFieldHandler('protein')}
@@ -100,7 +106,7 @@ class AddProduct extends React.Component {
             <Row center="xs">
               <TextField 
               type="number"
-                hintText="Fat"
+                hintText="Fat in grams"
                 fullWidth={true}
                 value={this.state.fat}
                 onChange={this.makeTextFieldHandler('fat')}
@@ -109,7 +115,7 @@ class AddProduct extends React.Component {
             <Row center="xs">
               <TextField 
               type="number"
-                hintText="Carbohydrates" 
+                hintText="Carbohydrates in grams" 
                 fullWidth={true}
                 value={this.state.carbohydrates}
                 onChange={this.makeTextFieldHandler('carbohydrates')}
@@ -117,7 +123,8 @@ class AddProduct extends React.Component {
             </Row>
             <Row center="xs">
               <TextField 
-                hintText="Photo url" 
+                floatingLabelText="Photo url"
+                hintText="http://"
                 fullWidth={true} 
                 value={this.state.url}
                 onChange={this.makeTextFieldHandler('url')}
