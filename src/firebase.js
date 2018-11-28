@@ -1,5 +1,6 @@
 import firebase from 'firebase';
 const config = {
+
     apiKey: "AIzaSyBPOo4tQ3HPZCAVu2SYpi3DQKV_bKZmox4",
     authDomain: "twoja-kaloria.firebaseapp.com",
     databaseURL: "https://twoja-kaloria.firebaseio.com",

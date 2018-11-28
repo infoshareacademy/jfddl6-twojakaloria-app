@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom'
 import { Grid, Row, Col } from 'react-flexbox-grid'
 import PieChart from '../../components/PieChart'
 
-
 const style = {
     paper: {
         margin: 12,
@@ -108,6 +107,7 @@ class Product extends React.Component {
                 />
 
             </Paper>
+
         )
     }
 }
