@@ -6,6 +6,7 @@ import IconButton from 'material-ui/IconButton'
 import DeleteIcon from 'material-ui/svg-icons/action/delete'
 import DetailsIcon from 'material-ui/svg-icons/action/assignment'
 import { unifyString } from './unify'
+import { Link } from 'react-router-dom'
 
 const API_URL = 'https://twoja-kaloria.firebaseio.com/products'
 
@@ -61,8 +62,9 @@ class Task extends React.Component {
                         rightIconButton={
                             <div>
                                 <IconButton>
-                                    <DetailsIcon
-                                        onClick={() => { }} />
+                                    <Link to={`/product/${product.id}`}>
+                                        <DetailsIcon />
+                                    </Link>
                                 </IconButton>
                                 <IconButton>
                                     <DeleteIcon

@@ -6,6 +6,7 @@ import IconButton from 'material-ui/IconButton'
 import DeleteIcon from 'material-ui/svg-icons/action/delete'
 import DetailsIcon from 'material-ui/svg-icons/action/assignment'
 import Paper from 'material-ui/Paper'
+import { Link } from 'react-router-dom'
 
 const styles = {
     paper: {
@@ -62,7 +63,9 @@ class FavoriteList extends React.Component {
                                 rightIconButton={
                                     <div>
                                         <IconButton>
-                                            <DetailsIcon onClick={() => { }} />
+                                            <Link to={`/product/${product.id}`}>
+                                                <DetailsIcon />
+                                            </Link>
                                         </IconButton>
                                         <IconButton>
                                             <DeleteIcon

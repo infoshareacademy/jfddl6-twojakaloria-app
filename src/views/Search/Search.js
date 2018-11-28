@@ -85,12 +85,6 @@ class Search extends React.Component {
                         primaryText={"Other"}
                     />
                 </SelectField>
-                {/* <TaskField
-                    hintText='Category'
-                    value={this.state.category}
-                    fullWidth={true}
-                    onChange={(event) => this.setState({ category: event.target.value })}
-                /> */}
                 <ItemSearch
                     name={this.state.text}
                     kcal={this.state.slider}
