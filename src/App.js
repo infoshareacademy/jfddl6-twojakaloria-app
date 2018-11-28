@@ -7,6 +7,7 @@ import DashboardView from './views/DashboardView/DashboardView'
 import Product from './views/Product/Product'
 import FavouriteList from './views/FavouriteList/FavouriteList'
 import ProductList from './views/ProductList/ProductList'
+
 import Search from './views/Search/Search'
 import AddProduct from './views/AddProduct/AddProduct'
 import Statement from './componenets/Statement'
@@ -54,11 +55,12 @@ class App extends React.Component {
                 <MenuItem>
                   Search
           </MenuItem>
+
               </Link>
             </Navbar>
             <div>
               <Route path="/" exact={true} component={DashboardView}></Route>
-              <Route path="/product" component={Product}></Route>
+          <Route path="/product/:key" component={Product}></Route>
               <Route path="/productlist" component={ProductList}></Route>
               <Route path="/favouritelist" component={FavouriteList}></Route>
               <Route path="/addproduct" component={() => <AddProduct toggleStatement={this.toggleStatement} />}></Route>
@@ -72,6 +74,7 @@ class App extends React.Component {
           handleRequestClose={this.toggleStatement}
           statementMessage={this.state.statementMessage}
         />
+
       </div>
     )
   }

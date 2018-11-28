@@ -1,11 +1,12 @@
 import firebase from 'firebase';
 const config = {
-  apiKey: "AIzaSyDfpec0txPvziSag-4x6IKtUVlFBmOW2Fk",
-  authDomain: "poniedzialek-d7900.firebaseapp.com",
-  databaseURL: "https://poniedzialek-d7900.firebaseio.com",
-  projectId: "poniedzialek-d7900",
-  storageBucket: "poniedzialek-d7900.appspot.com",
-  messagingSenderId: "954889666979"
+
+    apiKey: "AIzaSyBPOo4tQ3HPZCAVu2SYpi3DQKV_bKZmox4",
+    authDomain: "twoja-kaloria.firebaseapp.com",
+    databaseURL: "https://twoja-kaloria.firebaseio.com",
+    projectId: "twoja-kaloria",
+    storageBucket: "twoja-kaloria.appspot.com",
+    messagingSenderId: "903630807410"
 };
 
 const firebaseApp = firebase.initializeApp(config);
