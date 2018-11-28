@@ -64,6 +64,7 @@ class Dashboard extends React.Component {
           <Row middle="xs" center='xs'>
             <Col lg={6}>
               <Row middle="xs" center='xs'>
+              <h1>Liczba produktów w bazie</h1>
                 <PieChart
                   viewportWidth={this.state.viewportWidth}
                 />
@@ -71,6 +72,8 @@ class Dashboard extends React.Component {
             </Col>
             <Col lg={6}>
               <Row middle="xs" center='xs'>
+              <h1>Liczba użytkowników</h1>
+
                 <BarChart
                   viewportWidth={this.state.viewportWidth}
                 />
