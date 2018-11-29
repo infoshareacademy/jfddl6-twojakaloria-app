@@ -12,7 +12,11 @@ import Search from './views/Search/Search'
 import AddProduct from './views/AddProduct/AddProduct'
 import Statement from './componenets/Statement'
 
-
+const style = {
+  links: {
+    textDecoration: 'none'
+  }
+}
 class App extends React.Component {
   state = {
     isStatementOpen: false,
@@ -30,7 +34,6 @@ class App extends React.Component {
         <RouterTK
           toggleStatement={this.toggleStatement}
         />
-
         <Statement
           isStatementOpen={this.state.isStatementOpen}
           handleRequestClose={this.toggleStatement}
