@@ -2,18 +2,18 @@ import React from 'react'
 import { BarChart, CartesianGrid, XAxis, YAxis, Bar } from 'recharts'
 const data = [
     {
-        time: "pon",
+        time: "tydzień 1",
         users: 1,
         fill: "red"
 
     },
     {
-        time: "wt",
+        time: "tydzień 2",
         users: 3,
         fill: "blue"
 
     }, {
-        time: "śr",
+        time: "tydzień 3",
         users: 7,
         fill: "yellow"
 

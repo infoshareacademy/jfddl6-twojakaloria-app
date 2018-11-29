@@ -13,7 +13,6 @@ const style = {
     }
 }
 
-
 class Product extends React.Component {
     state = {
         data: null,
@@ -21,13 +20,12 @@ class Product extends React.Component {
     }
 
     componentDidMount() {
-        let key = this.props.match.params.key;
+        const key = this.props.match.params.key;
         database.ref(`/products/${key}`)
             .on('value', (snapshot) => {
                 this.setState({
                     data: snapshot.val()
                 })
-                console.log(snapshot.val())
             });
         window.addEventListener(
             'resize',
@@ -40,6 +38,15 @@ class Product extends React.Component {
             viewportWidth: window.innerWidth
         })
     }
+
+    toggleFavorite = () => {
+        if (!this.state.data) return
+
+        database.ref(`/products/${this.props.match.params.key}`).update({
+            isFavorite: !this.state.data.isFavorite
+        })
+    }
+
     render() {
         return (
             <Paper
@@ -102,8 +109,17 @@ class Product extends React.Component {
                     />
                 </Link>
                 <Button
-                    label={'Add to favourite'}
                     fullWidth
+                    onClick={this.toggleFavorite}
+                    label={
+                        this.state.data ?
+                            this.state.data.isFavorite ?
+                                'remove from favourite'
+                                :
+                                'add to favourite'
+                            :
+                            ''
+                    }
                 />
 
             </Paper>
