@@ -56,33 +56,38 @@ class Task extends React.Component {
                     .includes(
                         unifyString(this.props.category))))
                 .map((product) => (
-                    <ListItem
-                        key={product.name}
-                        primaryText={product.name}
-                        rightIconButton={
-                            <div>
-                                <IconButton>
-                                    <Link to={`/product/${product.id}`}>
-                                        <DetailsIcon />
-                                    </Link>
-                                </IconButton>
-                                <IconButton>
-                                    <DeleteIcon
-                                        onClick={() => this.deleteHandler(product.id)}
-                                    />
-                                </IconButton>
-                                <IconButton
-                                    onClick={() => this.isFavorite(product)}
-                                >
-                                    {product.isFavorite === true ?
-                                        <ActionFavorite />
-                                        :
-                                        <ActionFavoriteBorder />
-                                    }
-                                </IconButton>
-                            </div>
-                        }
-                    />
+                    <Link
+                        to={`/product/${product.id}`}
+                        style={{ textDecoration: 'none' }}
+                    >
+                        <ListItem
+                            key={product.name}
+                            primaryText={product.name}
+                            rightIconButton={
+                                <div>
+                                    <IconButton>
+                                        <Link to={`/product/${product.id}`}>
+                                            <DetailsIcon />
+                                        </Link>
+                                    </IconButton>
+                                    <IconButton>
+                                        <DeleteIcon
+                                            onClick={() => this.deleteHandler(product.id)}
+                                        />
+                                    </IconButton>
+                                    <IconButton
+                                        onClick={() => this.isFavorite(product)}
+                                    >
+                                        {product.isFavorite === true ?
+                                            <ActionFavorite />
+                                            :
+                                            <ActionFavoriteBorder />
+                                        }
+                                    </IconButton>
+                                </div>
+                            }
+                        />
+                    </Link>
                 )
                 )
         )
