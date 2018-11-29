@@ -9,9 +9,9 @@ import Paper from 'material-ui/Paper'
 
 const style = {
   paper: {
-      margin: 12,
-      padding: 12
-  }
+    margin: 12,
+    padding: 12
+  },
 }
 
 class Dashboard extends React.Component {
@@ -36,7 +36,7 @@ class Dashboard extends React.Component {
   render() {
     return (
       <Paper
-      style={style.paper}>
+        style={style.paper}>
         <Grid>
           <Row middle="xs" center='xs'>
             <Col lg={4}>
@@ -64,7 +64,7 @@ class Dashboard extends React.Component {
           <Row middle="xs" center='xs'>
             <Col lg={6}>
               <Row middle="xs" center='xs'>
-              <h1>Liczba produktów w bazie</h1>
+                <h1>Liczba produktów w bazie</h1>
                 <PieChart
                   viewportWidth={this.state.viewportWidth}
                 />
@@ -72,7 +72,7 @@ class Dashboard extends React.Component {
             </Col>
             <Col lg={6}>
               <Row middle="xs" center='xs'>
-              <h1>Liczba użytkowników</h1>
+                <h1>Liczba użytkowników</h1>
 
                 <BarChart
                   viewportWidth={this.state.viewportWidth}

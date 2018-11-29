@@ -53,32 +53,37 @@ class ProductList extends React.Component {
         return (
             <Paper style={styles.paper}>
                 {this.state.tasks.map((product) => (
-                    <ListItem
-                        key={product.name}
-                        primaryText={product.name}
-                        rightIconButton={
-                            <div>
-                                <IconButton>
-                                    <Link to={`/product/${product.id}`}>
-                                        <DetailsIcon />
-                                    </Link>
-                                </IconButton>
-                                <IconButton>
-                                    <DeleteIcon
-                                        onClick={() => this.deleteTask(product)}
-                                    />
-                                </IconButton>
-                                <IconButton
-                                    onClick={() => this.isFavorite(product)}>
-                                    {product.isFavorite === true ?
-                                        <ActionFavorite />
-                                        :
-                                        <ActionFavoriteBorder />
-                                    }
-                                </IconButton>
-                            </div>
-                        }
-                    />
+                    <Link
+                        to={`/product/${product.id}`}
+                        style={{ textDecoration: 'none' }}
+                    >
+                        <ListItem
+                            key={product.name}
+                            primaryText={product.name}
+                            rightIconButton={
+                                <div>
+                                    <IconButton>
+                                        <Link to={`/product/${product.id}`}>
+                                            <DetailsIcon />
+                                        </Link>
+                                    </IconButton>
+                                    <IconButton>
+                                        <DeleteIcon
+                                            onClick={() => this.deleteTask(product)}
+                                        />
+                                    </IconButton>
+                                    <IconButton
+                                        onClick={() => this.isFavorite(product)}>
+                                        {product.isFavorite === true ?
+                                            <ActionFavorite />
+                                            :
+                                            <ActionFavoriteBorder />
+                                        }
+                                    </IconButton>
+                                </div>
+                            }
+                        />
+                    </Link>
                 )
                 )
                 }
