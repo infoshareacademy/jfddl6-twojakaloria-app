@@ -7,7 +7,6 @@ import RaisedButton from "material-ui/RaisedButton";
 import { Grid, Row } from "react-flexbox-grid";
 
 import './AddProduct.css'
-import { parse } from "querystring";
 
 const categories = ["Vegetables", "Fruits", "Drinks", "Meat", "Other"];
 

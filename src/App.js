@@ -31,70 +31,62 @@ class App extends React.Component {
   render() {
     return (
       <div>
-
-        <Router>
-          <div>
-            <Navbar>
-              <Link
-                to='/'
-                style={style.links}
-              >
-                <MenuItem>
-                  Dashboard
-          </MenuItem>
-              </Link>
-              <Link
-                to='/productlist'
-                style={style.links}
-              >
-                <MenuItem>
-                  Product List
-          </MenuItem>
-              </Link>
-              <Link
-                to='/favouritelist'
-                style={style.links}
-              >
-                <MenuItem>
-                  Favourite
-          </MenuItem>
-              </Link>
-              <Link
-                to='/addproduct'
-                style={style.links}
-              >
-                <MenuItem>
-                  Add Product
-          </MenuItem>
-              </Link>
-              <Link
-                to='/search'
-                style={style.links}
-              >
-                <MenuItem>
-                  Search
-          </MenuItem>
-
-              </Link>
-            </Navbar>
-            <div>
-              <Route path="/" exact={true} component={DashboardView}></Route>
-              <Route path="/product/:key" component={Product}></Route>
-              <Route path="/productlist" component={ProductList}></Route>
-              <Route path="/favouritelist" component={FavouriteList}></Route>
-              <Route path="/addproduct" component={() => <AddProduct toggleStatement={this.toggleStatement} />}></Route>
-              <Route path='/search' component={Search}></Route>
-            </div>
-          </div>
-        </Router>
-
+        <RouterTK
+          toggleStatement={this.toggleStatement}
+        />
         <Statement
           isStatementOpen={this.state.isStatementOpen}
           handleRequestClose={this.toggleStatement}
           statementMessage={this.state.statementMessage}
         />
-
       </div>
+    )
+  }
+}
+
+class RouterTK extends React.PureComponent {
+  render() {
+    return (
+      <Router>
+        <div>
+          <Navbar>
+            <Link to='/'>
+              <MenuItem>
+                Dashboard
+          </MenuItem>
+            </Link>
+            <Link to='/productlist'>
+              <MenuItem>
+                Product List
+          </MenuItem>
+            </Link>
+            <Link to='/favouritelist'>
+              <MenuItem>
+                Favourite
+          </MenuItem>
+            </Link>
+            <Link to='/addproduct'>
+              <MenuItem>
+                Add Product
+          </MenuItem>
+            </Link>
+            <Link to='/search'>
+              <MenuItem>
+                Search
+          </MenuItem>
+
+            </Link>
+          </Navbar>
+          <div>
+            <Route path="/" exact={true} component={DashboardView}></Route>
+            <Route path="/product/:key" component={Product}></Route>
+            <Route path="/productlist" component={ProductList}></Route>
+            <Route path="/favouritelist" component={FavouriteList}></Route>
+            <Route path="/addproduct" component={() => <AddProduct toggleStatement={this.props.toggleStatement} />}></Route>
+            <Route path='/search' component={Search}></Route>
+          </div>
+        </div>
+      </Router>
     )
   }
 }
