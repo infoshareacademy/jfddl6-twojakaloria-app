@@ -66,7 +66,13 @@ class Product extends React.Component {
                         </Col>
                         <Col lg={6}>
                             <img
-                                style={{ maxWidth: '100%' }}
+                                style={{ 
+                                    maxWidth: '451px',
+                                    maxHeight: '451px',
+                                    minWidth: ' 450px',
+                                    minHeight: '450px',
+
+                                }}
                                 src={this.state.data && this.state.data.url}
                             />
 
