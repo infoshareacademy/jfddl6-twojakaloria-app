@@ -61,18 +61,21 @@ class Dashboard extends React.Component {
               </Link>
             </Col>
           </Row>
-          <Row middle="xs" center='xs'>
+          <Row  
+          center='xs'>
             <Col lg={6}>
+              <h1>Liczba produktów w bazie</h1>
+
               <Row middle="xs" center='xs'>
-                <h1>Liczba produktów w bazie</h1>
                 <PieChart
                   viewportWidth={this.state.viewportWidth}
                 />
               </Row>
             </Col>
             <Col lg={6}>
+              <h1>Liczba użytkowników</h1>
+
               <Row middle="xs" center='xs'>
-                <h1>Liczba użytkowników</h1>
 
                 <BarChart
                   viewportWidth={this.state.viewportWidth}
