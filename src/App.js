@@ -17,6 +17,7 @@ const style = {
     textDecoration: 'none'
   }
 }
+
 class App extends React.Component {
   state = {
     isStatementOpen: false,
@@ -50,27 +51,41 @@ class RouterTK extends React.PureComponent {
       <Router>
         <div>
           <Navbar>
-            <Link to='/'>
+            <Link
+              to='/'
+              style={style.links}
+            >
               <MenuItem>
                 Dashboard
           </MenuItem>
             </Link>
-            <Link to='/productlist'>
+            <Link
+              to='/productlist'
+              style={style.links}
+            >
               <MenuItem>
                 Product List
           </MenuItem>
             </Link>
-            <Link to='/favouritelist'>
+            <Link
+              to='/favouritelist'
+              style={style.links}
+            >
               <MenuItem>
                 Favourite
           </MenuItem>
             </Link>
-            <Link to='/addproduct'>
+            <Link
+              to='/addproduct'
+              style={style.links}>
               <MenuItem>
                 Add Product
           </MenuItem>
             </Link>
-            <Link to='/search'>
+            <Link
+              to='/search'
+              style={style.links}
+            >
               <MenuItem>
                 Search
           </MenuItem>
