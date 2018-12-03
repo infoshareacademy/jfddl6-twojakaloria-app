@@ -57,9 +57,9 @@ class FavoriteList extends React.Component {
                 {
                     this.state.tasks.filter((product) => product.isFavorite)
                         .map((product) => (
-                            <Link 
-                            to={`/product/${product.id}`}
-                            style={{textDecoration: 'none'}}
+                            <Link
+                                to={`/product/${product.id}`}
+                                style={{ textDecoration: 'none' }}
                             >
                                 <ListItem
                                     key={product.name}
@@ -73,10 +73,19 @@ class FavoriteList extends React.Component {
                                             </IconButton>
                                             <IconButton>
                                                 <DeleteIcon
-                                                    onClick={() => this.deleteTask(product)}
+                                                    onClick={(event) => {
+                                                        event.preventDefault()
+                                                        this.deleteTask(product)
+                                                    }
+                                                    }
                                                 />
                                             </IconButton>
-                                            <IconButton onClick={() => this.isFavorite(product)}>
+                                            <IconButton onClick={(event) => {
+                                                event.preventDefault()
+                                                this.isFavorite(product)
+                                            }
+                                            }
+                                            >
                                                 {product.isFavorite === true ?
                                                     <ActionFavorite />
                                                     :
