@@ -18,7 +18,6 @@ const style = {
   }
 }
 
-
 class App extends React.Component {
   state = {
     isStatementOpen: false,
@@ -36,7 +35,6 @@ class App extends React.Component {
         <RouterTK
           toggleStatement={this.toggleStatement}
         />
-
         <Statement
           isStatementOpen={this.state.isStatementOpen}
           handleRequestClose={this.toggleStatement}
