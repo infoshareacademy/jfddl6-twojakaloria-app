@@ -28,7 +28,7 @@ const Chart = (props) => (
                     :
                     props.viewportWidth / 2.5
             }
-            height={250}
+            height={500}
             data={data}
         >
             <CartesianGrid strokeDasharray="3 3" />
