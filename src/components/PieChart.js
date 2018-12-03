@@ -34,22 +34,27 @@ const data = [
 
 ];
 
-const Chart = (props) => (
-    <div>
-        <PieChart width={
-            props.width
-            ||
-            (
-                props.viewportWidth <= 992 ?
-                    props.viewportWidth / 1.5
-                    :
-                    props.viewportWidth / 2.5
-            )
-        }
-            height={500}>
-            <Pie data={props.data || data} dataKey="value" nameKey="name" />
-            <Tooltip />
-        </PieChart>
-    </div>
-);
+
+
+
+const Chart = (props) => {
+    const calculatedSize = props.width
+        ||
+        (
+            props.viewportWidth <= 992 ?
+                props.viewportWidth / 1.5
+                :
+                props.viewportWidth / 2.5
+        )
+        const size = Math.min(calculatedSize, 500);
+    return (
+        <div>
+            <PieChart width={size} height={size}>
+                <Pie data={props.data || data} dataKey="value" nameKey="name" />
+                <Tooltip />
+            </PieChart>
+        </div>
+    )
+}
+
 export default Chart
