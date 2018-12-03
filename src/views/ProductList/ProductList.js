@@ -69,11 +69,20 @@ class ProductList extends React.Component {
                                     </IconButton>
                                     <IconButton>
                                         <DeleteIcon
-                                            onClick={() => this.deleteTask(product)}
+                                            onClick={(event) => {
+                                                event.preventDefault()
+                                                this.deleteTask(product)
+                                            }
+                                            }
                                         />
                                     </IconButton>
                                     <IconButton
-                                        onClick={() => this.isFavorite(product)}>
+                                        onClick={(event) => {
+                                            event.preventDefault()
+                                            this.isFavorite(product)
+                                        }
+                                        }
+                                    >
                                         {product.isFavorite === true ?
                                             <ActionFavorite />
                                             :
