@@ -19,16 +19,19 @@ const Forms = (props) => (
         <div>
             <Button
                 label='Login'
+                onClick={props.onClickLoginButton}
             />
             <Button
                 label='Sing in'
+                onClick={props.onClickSingInButton}
             />
         </div>
         <div>
             <Button
-                label='Login in with Google'
+                label='Login by Google'
                 backgroundColor={'#F44336'}
                 labelColor={'#212121'}
+                onClick={props.onClickLoginByGoogleButton}
             />
         </div>
     </div>
