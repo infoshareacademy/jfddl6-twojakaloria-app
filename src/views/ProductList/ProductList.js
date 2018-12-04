@@ -14,7 +14,7 @@ const styles = {
         padding: 30
     }
 }
-const API_URL = 'https://twoja-kaloria.firebaseio.com/products/zmienna/'
+const API_URL = 'https://twoja-kaloria.firebaseio.com/products'
 class ProductList extends React.Component {
     state = {
         tasks: []

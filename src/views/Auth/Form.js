@@ -13,6 +13,7 @@ const Forms = (props) => (
         <div>
             <Input
                 hintText='Password'
+                type='Password'
             />
         </div>
         <div>

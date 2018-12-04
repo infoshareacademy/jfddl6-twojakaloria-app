@@ -9,6 +9,9 @@ const style = {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+    },
+    input: {
+        margin: 15
     }
 }
 class Auth extends React.Component {
@@ -16,10 +19,11 @@ class Auth extends React.Component {
         return (
             <div>
                 <Paper
-                style={style.paper}
+                    style={style.paper}
                 >
-                    <h1>Log in!</h1>
+                    <h2>Log in!</h2>
                     <Forms
+                        labelStyle={style.label}
                     />
                 </Paper>
             </div>

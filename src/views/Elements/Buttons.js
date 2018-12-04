@@ -3,11 +3,10 @@ import React from 'react'
 import RaisedButton from 'material-ui/RaisedButton'
 
 const style = {
-    margin: 15
+    margin: 10
 }
 
 const Button = (props) => (
-    <div>
         <RaisedButton
             label={props.label}
             backgroundColor={props.backgroundColor}
@@ -15,7 +14,7 @@ const Button = (props) => (
             style={style}
             onClick={props.onClick}
             icon={props.icon}
+            fullWidth={props.fullWidth}
         />
-    </div>
 )
 export default Button
