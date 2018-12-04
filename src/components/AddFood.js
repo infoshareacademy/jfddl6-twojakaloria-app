@@ -22,7 +22,7 @@ const style = {
     },
     addButton: {
         display: 'flex',
-        justifyContent: 'center'
+        justifyContent: 'flex-end'
     }
 }
 
@@ -44,8 +44,8 @@ class AddFood extends React.Component {
                 >
                     <h2>Śniadanie</h2>
                     <ListItem
-                        key="c"
-                        primaryText="c"
+                        key="Produkt"
+                        primaryText="Produkt"
                         rightIconButton={
                             <div>
                                 <IconButton>
@@ -83,6 +83,7 @@ class AddFood extends React.Component {
                     >
                         <RaisedButton
                             label="Add product!"
+                            primary={true}
                         />
                     </div>
                 </Paper>
@@ -92,8 +93,8 @@ class AddFood extends React.Component {
                 >
                     <h2>Śniadanie</h2>
                     <ListItem
-                        key="c"
-                        primaryText="c"
+                        key="Produkt"
+                        primaryText="Produkt"
                         rightIconButton={
                             <div>
                                 <IconButton>
@@ -131,6 +132,7 @@ class AddFood extends React.Component {
                     >
                         <RaisedButton
                             label="Add product!"
+                            primary={true}
                         />
                     </div>
                 </Paper>
@@ -140,8 +142,8 @@ class AddFood extends React.Component {
                 >
                     <h2>Śniadanie</h2>
                     <ListItem
-                        key="c"
-                        primaryText="c"
+                        key="Produkt"
+                        primaryText="Produkt"
                         rightIconButton={
                             <div>
                                 <IconButton>
@@ -179,6 +181,7 @@ class AddFood extends React.Component {
                     >
                         <RaisedButton
                             label="Add product!"
+                            primary={true}
                         />
                     </div>
                 </Paper>
