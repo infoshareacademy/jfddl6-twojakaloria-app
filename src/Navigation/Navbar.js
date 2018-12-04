@@ -1,6 +1,8 @@
 import React from 'react'
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer'
+import FlatButton from 'material-ui/FlatButton'
+import { Link } from 'react-router-dom'
 
 class Navbar extends React.Component {
     state = {
@@ -14,6 +16,12 @@ class Navbar extends React.Component {
                     title={this.props.label ? this.props.label : 'Twoja Kaloria'}
                     onLeftIconButtonClick={this.toggleDrawer}
                     iconClassNameRight="muidocs-icon-navigation-expand-more"
+                    iconElementRight={
+                        <FlatButton
+                            label="Add food"
+                            href="/addfood"
+                        />
+                    }
                 />
                 <Drawer
                     docked={false}
