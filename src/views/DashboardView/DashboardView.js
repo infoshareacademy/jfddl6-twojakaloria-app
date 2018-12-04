@@ -78,9 +78,10 @@ class Dashboard extends React.Component {
           if (categoryObject[categoryList[i]]) {
 
           } else {
-
+            categoryObject[categoryList[i]] = 1
           }
-      }
+        }
+        console.log(categoryObject)
 
         const endResult = {
           vegetables: 2,
