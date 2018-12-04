@@ -11,7 +11,7 @@ const Button = (props) => (
             label={props.label}
             backgroundColor={props.backgroundColor}
             labelColor={props.labelColor}
-            style={style}
+            style={props.style}
             onClick={props.onClick}
             icon={props.icon}
             fullWidth={props.fullWidth}

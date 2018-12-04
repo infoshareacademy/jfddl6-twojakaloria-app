@@ -1,7 +1,7 @@
 import React from 'react'
 import Paper from 'material-ui/Paper'
 import { auth, googleProvider } from '../../firebase'
-import Forms from './Form'
+import Forms from './Forms'
 const style = {
     paper: {
         margin: 30,
@@ -24,6 +24,11 @@ class Auth extends React.Component {
                     <h2>Log in!</h2>
                     <Forms
                         labelStyle={style.label}
+                        onClickLoginButton={()=>{}}
+                        onClickSingInButton={()=>{}}
+                        onClickLoginByGoogleButton={()=>{}}
+                        valueLoginInput={()=>{}}
+                        valuePasswordInput={()=>{}}
                     />
                 </Paper>
             </div>
