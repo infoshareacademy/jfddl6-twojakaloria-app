@@ -76,19 +76,19 @@ class Dashboard extends React.Component {
         const categoryObject = {}
         for (let i = 0; i < categoryList.length; i++) {
           if (categoryObject[categoryList[i]]) {
-
+            categoryObject[categoryList[i]] = i++
           } else {
             categoryObject[categoryList[i]] = 1
           }
         }
         console.log(categoryObject)
 
-        const endResult = {
-          vegetables: 2,
-          drinks: 2,
-          other: 2,
-          meat: 1,
-        }
+        // const endResult = {
+        //   vegetables: 2,
+        //   drinks: 2,
+        //   other: 2,
+        //   meat: 1,
+        // }
         this.setState(data)
 
       })
