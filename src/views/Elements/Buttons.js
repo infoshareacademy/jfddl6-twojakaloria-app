@@ -10,10 +10,11 @@ const Button = (props) => (
     <div>
         <RaisedButton
             label={props.label}
-            backgroundColor={"#4FC3F7"}
-            labelColor={'#212121'}
+            backgroundColor={props.backgroundColor}
+            labelColor={props.labelColor}
             style={style}
             onClick={props.onClick}
+            icon={props.icon}
         />
     </div>
 )
