@@ -1,41 +1,6 @@
 import React from "react";
 import { PieChart, Pie, Tooltip } from "recharts";
 
-const data = [
-    {
-        value: 15,
-        name: "Warzywa",
-        fill: "red"
-    },
-    {
-        value: 10,
-        name: "Owoce",
-        fill: "purple"
-
-    },
-    {
-        value: 6,
-        name: "Mięso",
-        fill: "blue"
-
-    },
-    {
-        value: 3,
-        name: "Ryby",
-        fill: "green"
-
-    },
-    {
-        value: 12,
-        name: "Nabiał",
-        fill: "yellow"
-
-    }
-
-];
-
-
-
 
 const Chart = (props) => {
     const calculatedSize = props.width
@@ -50,7 +15,7 @@ const Chart = (props) => {
     return (
         <div>
             <PieChart width={size} height={size}>
-                <Pie data={props.data || data} dataKey="value" nameKey="name" />
+                <Pie data={props.data} dataKey="value" nameKey="name" />
                 <Tooltip />
             </PieChart>
         </div>
