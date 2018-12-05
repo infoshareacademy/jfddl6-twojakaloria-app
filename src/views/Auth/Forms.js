@@ -1,15 +1,18 @@
 import React from 'react'
 import Button from '../Elements/Buttons'
 import Input from '../Elements/Input'
+
+import icon from '../../img/search.svg'
+
 const style = {
-    buttonLogin:{
+    buttonLogin: {
         width: '103px',
         margin: 10
     },
-buttonLoginByGoogle:{
-    width: '226px',
-    margin: 10
-}
+    buttonLoginByGoogle: {
+        width: '226px',
+        margin: 10
+    }
 }
 
 const Forms = (props) => (
@@ -32,7 +35,7 @@ const Forms = (props) => (
                 style={style.buttonLogin}
             />
             <Button
-                label='Sing in'
+                label='Sign in'
                 onClick={props.onClickSingInButton}
                 style={style.buttonLogin}
             />
@@ -40,11 +43,21 @@ const Forms = (props) => (
         <div>
             <Button
                 label='Login by Google'
-                backgroundColor={'#F44336'}
+                backgroundColor={'white'}
                 labelColor={'#212121'}
                 onClick={props.onClickLoginByGoogleButton}
                 style={style.buttonLoginByGoogle}
+                icon={
+                    <img
+                        src={icon}
+                        style={{
+                            maxHeight: '100%',
+                            maxWidth: '10%'
+                        }}
+                    />
+                }
             />
+
         </div>
     </div>
 )
