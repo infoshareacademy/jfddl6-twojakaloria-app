@@ -18,38 +18,38 @@ const style = {
 const API_URL = 'https://twoja-kaloria.firebaseio.com/products'
 
 
-const data = [
-  {
-    value: 15,
-    name: "Warzywa",
-    fill: "red"
-  },
-  {
-    value: 10,
-    name: "Owoce",
-    fill: "purple"
+// const data = [
+//   {
+//     value: 15,
+//     name: "Warzywa",
+//     fill: "red"
+//   },
+//   {
+//     value: 10,
+//     name: "Owoce",
+//     fill: "purple"
 
-  },
-  {
-    value: 6,
-    name: "Mięso",
-    fill: "blue"
+//   },
+//   {
+//     value: 6,
+//     name: "Mięso",
+//     fill: "blue"
 
-  },
-  {
-    value: 3,
-    name: "Ryby",
-    fill: "green"
+//   },
+//   {
+//     value: 3,
+//     name: "Ryby",
+//     fill: "green"
 
-  },
-  {
-    value: 12,
-    name: "Nabiał",
-    fill: "yellow"
+//   },
+//   {
+//     value: 12,
+//     name: "Nabiał",
+//     fill: "yellow"
 
-  }
+//   }
 
-];
+// ];
 
 class Dashboard extends React.Component {
   state = {
@@ -62,6 +62,7 @@ class Dashboard extends React.Component {
       this.resizeListener
     )
     this.loadData()
+
 
   }
   loadData = () => {
@@ -76,20 +77,23 @@ class Dashboard extends React.Component {
         const categoryObject = {}
         for (let i = 0; i < categoryList.length; i++) {
           if (categoryObject[categoryList[i]]) {
-            categoryObject[categoryList[i]] = i++
+            categoryObject[categoryList[i]] = categoryObject[categoryList[i]] + 1
           } else {
             categoryObject[categoryList[i]] = 1
           }
         }
         console.log(categoryObject)
+        
+        const categoryArray = Object.entries(categoryObject)
+        const pieChartData = categoryArray.map(entry => ({
+          value: entry[1],
+          name: entry[0],
+        }))
+        console.log(pieChartData)
 
-        // const endResult = {
-        //   vegetables: 2,
-        //   drinks: 2,
-        //   other: 2,
-        //   meat: 1,
-        // }
-        this.setState(data)
+        this.setState({
+          data: pieChartData
+        })
 
       })
   }
@@ -135,7 +139,7 @@ class Dashboard extends React.Component {
 
               <Row middle="xs" center='xs'>
                 <PieChart
-                  data={data}
+                  data={this.state.data}
                   viewportWidth={this.state.viewportWidth}
                 />
               </Row>
