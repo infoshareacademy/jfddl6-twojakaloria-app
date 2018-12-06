@@ -14,42 +14,7 @@ const style = {
   },
 }
 
-
 const API_URL = 'https://twoja-kaloria.firebaseio.com/products'
-
-
-// const data = [
-//   {
-//     value: 15,
-//     name: "Warzywa",
-//     fill: "red"
-//   },
-//   {
-//     value: 10,
-//     name: "Owoce",
-//     fill: "purple"
-
-//   },
-//   {
-//     value: 6,
-//     name: "Mięso",
-//     fill: "blue"
-
-//   },
-//   {
-//     value: 3,
-//     name: "Ryby",
-//     fill: "green"
-
-//   },
-//   {
-//     value: 12,
-//     name: "Nabiał",
-//     fill: "yellow"
-
-//   }
-
-// ];
 
 class Dashboard extends React.Component {
   state = {
@@ -63,17 +28,14 @@ class Dashboard extends React.Component {
     )
     this.loadData()
 
-
   }
+
   loadData = () => {
     fetch(`${API_URL}.json`)
       .then(response => response.json())
       .then(data => {
         const array = Object.values(data)
         const categoryList = array.map(element => element.category)
-        console.log(categoryList)
-
-
         const categoryObject = {}
         for (let i = 0; i < categoryList.length; i++) {
           if (categoryObject[categoryList[i]]) {
@@ -82,27 +44,21 @@ class Dashboard extends React.Component {
             categoryObject[categoryList[i]] = 1
           }
         }
-        console.log(categoryObject)
-        const colors = ['red', 'blue', 'yellow', 'pink', 'purple', 'green', 'grey']
-
-     
-
+        const colors = ['red', 'blue', 'yellow', 'green', 'purple', 'pink', 'grey']
         const categoryArray = Object.entries(categoryObject)
         const pieChartData = categoryArray.map((entry, i) => ({
           value: entry[1],
           name: entry[0],
           fill: colors[i]
         }))
-        console.log(pieChartData)
-
         this.setState({
           data: pieChartData
         })
 
       })
   }
+
   resizeListener = () => {
-    console.log(window.innerWidth)
     this.setState({
       viewportWidth: window.innerWidth
     })
@@ -140,7 +96,6 @@ class Dashboard extends React.Component {
             center='xs'>
             <Col lg={6}>
               <h1>Liczba produktów w bazie</h1>
-
               <Row middle="xs" center='xs'>
                 <PieChart
                   data={this.state.data}
@@ -150,9 +105,7 @@ class Dashboard extends React.Component {
             </Col>
             <Col lg={6}>
               <h1>Liczba użytkowników</h1>
-
               <Row middle="xs" center='xs'>
-
                 <BarChart
                   viewportWidth={this.state.viewportWidth}
                 />
@@ -172,6 +125,5 @@ class Dashboard extends React.Component {
     )
   }
 }
-
 
 export default Dashboard
