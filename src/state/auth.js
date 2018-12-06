@@ -32,11 +32,11 @@ const logInAction = (user) => ({
 })
 const logOutAction = () => ({ type: LOG_OUT })
 
-const emailOnChange = (value) => ({
+export const emailOnChange = (value) => ({
     type: EMAIL,
     value
 })
-const passwordOnChange = (value) => ({
+export const passwordOnChange = (value) => ({
     type: PASSWORD,
     value
 })
@@ -56,6 +56,16 @@ export default (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 isLoggedUser: false
+            }
+        case EMAIL:
+            return {
+                ...state,
+                email: action.value
+            }
+        case PASSWORD:
+            return {
+                ...state,
+                password: action.value
             }
         default:
             return state

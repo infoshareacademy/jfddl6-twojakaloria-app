@@ -3,7 +3,13 @@ import Paper from 'material-ui/Paper'
 import Forms from './Forms'
 import { connect } from 'react-redux'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
-import { onClickLoginByGoogle, initAuthChangeAsyncAction, logOutAsyncAction } from '../../state/auth'
+import {
+    onClickLoginByGoogle,
+    initAuthChangeAsyncAction,
+    logOutAsyncAction,
+    emailOnChange,
+    passwordOnChange
+} from '../../state/auth'
 const style = {
     paper: {
         margin: 30,
@@ -51,8 +57,8 @@ class Auth extends React.Component {
                         onClickLoginButton={() => { }}
                         onClickSingInButton={() => { }}
                         onClickLoginByGoogleButton={this.props._onClickLoginByGoogle}
-                        valueLoginInput={() => { }}
-                        valuePasswordInput={() => { }}
+                        valueLoginInput={this.props._emailOnChange}
+                        valuePasswordInput={this.props._passwordOnChange}
                     />
                 </Paper>
             </div>
@@ -67,6 +73,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     _onClickLoginByGoogle: () => dispatch(onClickLoginByGoogle()),
     _logOutAsyncAction: () => dispatch(logOutAsyncAction()),
-    _initAuthChangeAsyncAction: () => dispatch(initAuthChangeAsyncAction())
+    _initAuthChangeAsyncAction: () => dispatch(initAuthChangeAsyncAction()),
+    _emailOnChange: (event) => dispatch(emailOnChange(event.target.value)),
+    _passwordOnChange: (event) => dispatch(passwordOnChange(event.target.value))
 })
 export default connect(mapStateToProps, mapDispatchToProps)(Auth)

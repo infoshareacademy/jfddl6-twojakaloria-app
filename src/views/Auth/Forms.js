@@ -20,12 +20,14 @@ const Forms = (props) => (
         <div>
             <Input
                 hintText='Email'
+                onChange={props.valueLoginInput}
             />
         </div>
         <div>
             <Input
                 hintText='Password'
                 type='Password'
+                onChange={props.valuePasswordInput}
             />
         </div>
         <div>
