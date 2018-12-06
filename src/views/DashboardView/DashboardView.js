@@ -83,11 +83,15 @@ class Dashboard extends React.Component {
           }
         }
         console.log(categoryObject)
-        
+        const colors = ['red', 'blue', 'yellow', 'pink', 'purple', 'green', 'grey']
+
+     
+
         const categoryArray = Object.entries(categoryObject)
-        const pieChartData = categoryArray.map(entry => ({
+        const pieChartData = categoryArray.map((entry, i) => ({
           value: entry[1],
           name: entry[0],
+          fill: colors[i]
         }))
         console.log(pieChartData)
 
