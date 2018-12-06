@@ -1,4 +1,5 @@
 import { auth, googleProvider, database } from '../firebase'
+import React from 'react'
 
 const LOG_IN = 'auth/LOG_IN'
 const LOG_OUT = 'auth/LOG_OUT'
@@ -22,6 +23,15 @@ export const initAuthChangeAsyncAction = () => (dispatch, getState) => {
         }
     )
 }
+
+export const logInAsyncAction = () => (dispatch, getState) => {
+    const { auth: { email, password } } = getState()
+    auth.signInWithEmailAndPassword(email, password)
+        .catch(error => {
+            alert(`Email or password is incorrect. If you are not registered, do it!`)
+        })
+}
+
 export const logOutAsyncAction = () => (dispatch, getState) => {
     auth.signOut()
 }
@@ -30,12 +40,16 @@ const logInAction = (user) => ({
     type: LOG_IN,
     user
 })
-const logOutAction = () => ({ type: LOG_OUT })
+
+const logOutAction = () => ({
+    type: LOG_OUT
+})
 
 export const emailOnChange = (value) => ({
     type: EMAIL,
     value
 })
+
 export const passwordOnChange = (value) => ({
     type: PASSWORD,
     value

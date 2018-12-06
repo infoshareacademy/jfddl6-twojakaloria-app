@@ -8,8 +8,10 @@ import {
     initAuthChangeAsyncAction,
     logOutAsyncAction,
     emailOnChange,
-    passwordOnChange
+    passwordOnChange,
+    logInAsyncAction
 } from '../../state/auth'
+
 const style = {
     paper: {
         margin: 30,
@@ -22,6 +24,7 @@ const style = {
         margin: 15
     }
 }
+
 class Auth extends React.Component {
 
     componentWillMount() {
@@ -54,7 +57,7 @@ class Auth extends React.Component {
                     <h2>Log in!</h2>
                     <Forms
                         labelStyle={style.label}
-                        onClickLoginButton={() => { }}
+                        onClickLoginButton={this.props._logInAsyncAction}
                         onClickSingInButton={() => { }}
                         onClickLoginByGoogleButton={this.props._onClickLoginByGoogle}
                         valueLoginInput={this.props._emailOnChange}
@@ -65,16 +68,20 @@ class Auth extends React.Component {
         )
     }
 }
+
 const mapStateToProps = state => ({
     _isLoggedUser: state.auth.isLoggedUser,
     _email: state.auth.email,
     _password: state.auth.password
 })
+
 const mapDispatchToProps = dispatch => ({
     _onClickLoginByGoogle: () => dispatch(onClickLoginByGoogle()),
+    _logInAsyncAction: () => dispatch(logInAsyncAction()),
     _logOutAsyncAction: () => dispatch(logOutAsyncAction()),
     _initAuthChangeAsyncAction: () => dispatch(initAuthChangeAsyncAction()),
     _emailOnChange: (event) => dispatch(emailOnChange(event.target.value)),
     _passwordOnChange: (event) => dispatch(passwordOnChange(event.target.value))
 })
+
 export default connect(mapStateToProps, mapDispatchToProps)(Auth)
