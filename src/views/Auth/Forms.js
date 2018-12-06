@@ -35,7 +35,7 @@ const Forms = (props) => (
                 style={style.buttonLogin}
             />
             <Button
-                label='Sign in'
+                label='Sign up'
                 onClick={props.onClickSingInButton}
                 style={style.buttonLogin}
             />
