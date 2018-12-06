@@ -86,7 +86,7 @@ class AddFood extends React.Component {
                         <RaisedButton
                             label="Add product!"
                             primary={true}
-                            href="/productlist"
+                            href="/addfoodlist"
                         />
                     </div>
                 </Paper>
@@ -136,7 +136,7 @@ class AddFood extends React.Component {
                         <RaisedButton
                             label="Add product!"
                             primary={true}
-                            href="/productlist"
+                            href="/addfoodlist"
                         />
                     </div>
                 </Paper>
@@ -186,7 +186,7 @@ class AddFood extends React.Component {
                         <RaisedButton
                             label="Add product!"
                             primary={true}
-                            href="/productlist"
+                            href="/addfoodlist"
                         />
                     </div>
                 </Paper>

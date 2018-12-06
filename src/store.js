@@ -1,8 +1,12 @@
 import { createStore, combineReducers, compose, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 
-const reducer = combineReducers({
+import addFood from './state/addFood'
+import listFood from './state/listFood'
 
+const reducer = combineReducers({
+    addFood,
+    listFood
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
