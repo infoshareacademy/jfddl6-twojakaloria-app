@@ -4,7 +4,6 @@ import ActionFavorite from 'material-ui/svg-icons/action/favorite';
 import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
 import IconButton from 'material-ui/IconButton'
 import DeleteIcon from 'material-ui/svg-icons/action/delete'
-import AddFood from 'material-ui/svg-icons/action/note-add';
 import DetailsIcon from 'material-ui/svg-icons/action/assignment'
 import Paper from 'material-ui/Paper'
 import { Link } from 'react-router-dom'
@@ -71,15 +70,7 @@ class ProductList extends React.Component {
                             primaryText={product.name}
                             rightIconButton={
                                 <div>
-                                    <IconButton>
-                                        <AddFood
-                                            onClick={(event) => {
-                                                event.preventDefault()
-                                                this.addFoodToList(product)
-                                            }}
-                                        
-                                        />
-                                    </IconButton>
+                                   
                                     <IconButton>
                                         <Link to={`/product/${product.id}`}>
                                             <DetailsIcon />

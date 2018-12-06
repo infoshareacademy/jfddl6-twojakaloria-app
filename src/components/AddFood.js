@@ -7,6 +7,8 @@ import IconButton from 'material-ui/IconButton'
 import DeleteIcon from 'material-ui/svg-icons/action/delete'
 import DetailsIcon from 'material-ui/svg-icons/action/assignment'
 
+import { connect } from 'react-redux'
+
 const style = {
     paper: {
         margin: 30,
@@ -201,4 +203,4 @@ class AddFood extends React.Component {
     }
 }
 
-export default AddFood
+export default connect()(AddFood)
