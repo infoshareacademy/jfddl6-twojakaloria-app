@@ -45,7 +45,7 @@ class Search extends React.Component {
                 />
                 <Slider
                     min={0}
-                    max={1000}
+                    max={2000}
                     step={1}
                     value={this.state.slider}
                     onChange={this.handleSlider}

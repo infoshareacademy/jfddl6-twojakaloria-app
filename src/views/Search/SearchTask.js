@@ -72,11 +72,19 @@ class Task extends React.Component {
                                     </IconButton>
                                     <IconButton>
                                         <DeleteIcon
-                                            onClick={() => this.deleteHandler(product.id)}
+                                            onClick={(event) => {
+                                                event.preventDefault()
+                                                this.deleteHandler(product.id)
+                                            }
+                                            }
                                         />
                                     </IconButton>
                                     <IconButton
-                                        onClick={() => this.isFavorite(product)}
+                                        onClick={(event) => {
+                                            event.preventDefault()
+                                            this.isFavorite(product)
+                                        }
+                                        }
                                     >
                                         {product.isFavorite === true ?
                                             <ActionFavorite />
