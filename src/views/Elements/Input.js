@@ -7,6 +7,8 @@ const Input = (props) => (
         value={props.value}
         fullWidth={props.fullWidth}
         onChange={props.onChange}
+        style={props.labelStyle}
+        type={props.type}
     />
 )
 export default Input
