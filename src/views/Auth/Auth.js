@@ -11,6 +11,7 @@ import {
     passwordOnChange,
     logInAsyncAction
 } from '../../state/auth'
+import Register from '../Register'
 
 const style = {
     paper: {
@@ -64,6 +65,9 @@ class Auth extends React.Component {
                         valuePasswordInput={this.props._passwordOnChange}
                     />
                 </Paper>
+
+                <Register />
+
             </div>
         )
     }
