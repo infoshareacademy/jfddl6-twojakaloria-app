@@ -16,17 +16,17 @@ const style = {
 
 class ListFood extends React.Component {
 
-    componentWillMount() {
+    componentDidMount() {
+        console.log(this.props._products)
         this.props._startSyncingProductsFromDbAsyncAction()
     }
 
-    componentDidMount() {
+    componentWillUnmount() {
         this.props._stopSyncingProductsFromDbAsyncAction()
     }
 
 
     render() {
-        console.log(props._products)
         return (
             <Paper
                 style={style.paper}
@@ -34,9 +34,16 @@ class ListFood extends React.Component {
                 <div>
 
                     <h1>Choose food</h1>
-                    <ul>
-
-                    </ul>
+                    <div>
+                        {this.props._products &&
+                            this.props._products.map ?
+                            this.props._products.map(product => (
+                                <div>{product.category}</div>
+                            ))
+                            :
+                            'Error!'
+                        }
+                    </div>
                 </div>
             </Paper>
 
