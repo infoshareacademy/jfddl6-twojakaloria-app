@@ -1,34 +1,43 @@
 import { database } from '../firebase'
 
-const LOAD_DATA = 'listFood/LOAD_DATA'
+const SET_DATA = 'listFood/SET_DATA'
 
 const INITIAL_STATE = {
     products: []
 }
 
-export const loadProductsFromDbAsyncAction = () => (dispatch, getState) => {
-
-    const products = getState().products
-
+export const startSyncingProductsFromDbAsyncAction = () => (dispatch, getState) => {
     database.ref(`/products`).on(
         'value',
-        snapshot => snapshot.val()
+        snapshot => {
+            const array = Object.entries(snapshot.val())
+            const productList = array.map(entry => ({
+                ...entry[1]
+            }))
+            dispatch(setDataAction(productList))
+        }
     )
 }
 
+export const stopSyncingProductsFromDbAsyncAction = () => (dispatch, getState) => {
+    database.ref(`/products`).off()
+}
 
+const setDataAction = data => ({
+    type: SET_DATA,
+    data
+})
 
 export default (state = INITIAL_STATE, action) => {
-
     switch (action.type) {
 
-        case LOAD_DATA: 
+        case SET_DATA:
             return {
                 ...state,
-                products: action.products
+                products: action.data
             }
 
-        default: 
+        default:
             return state
     }
 

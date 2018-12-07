@@ -2,7 +2,8 @@ import React from 'react'
 import Paper from 'material-ui/Paper'
 
 import { connect } from 'react-redux'
-import { loadProductsFromDbAsyncAction } from '../state/listFood'
+import { startSyncingProductsFromDbAsyncAction, 
+    stopSyncingProductsFromDbAsyncAction } from '../state/listFood'
 
 
 
@@ -13,27 +14,44 @@ const style = {
     }
 }
 
-const ListFood = (props) => (
-    <Paper
-        style={style.paper}
-    >
-        <div>
+class ListFood extends React.Component {
 
-            <h1>Choose food</h1>
-            <ul>
-                {console.log(props._loadProductsFromDbAsyncAction())}
-            </ul>
-        </div>
-    </Paper>
-)
+    componentWillMount() {
+        this.props._startSyncingProductsFromDbAsyncAction()
+    }
+
+    componentDidMount() {
+        this.props._stopSyncingProductsFromDbAsyncAction()
+    }
+
+
+    render() {
+        console.log(props._products)
+        return (
+            <Paper
+                style={style.paper}
+            >
+                <div>
+
+                    <h1>Choose food</h1>
+                    <ul>
+
+                    </ul>
+                </div>
+            </Paper>
+
+        )
+    }
+}
+
 
 const mapStateToProps = state => ({
     _products: state.listFood.products
 })
 
 const dispatchPropsToState = dispatch => ({
-    _loadProductsFromDbAsyncAction: () =>
-        dispatch(loadProductsFromDbAsyncAction)
+    _startSyncingProductsFromDbAsyncAction: () => dispatch(startSyncingProductsFromDbAsyncAction()),
+    _stopSyncingProductsFromDbAsyncAction: () => dispatch(stopSyncingProductsFromDbAsyncAction())
 })
 
 
