@@ -38,7 +38,7 @@ class Auth extends React.Component {
                 <FloatingActionButton
                     style={{
                         position: 'fixed',
-                        top: 10,
+                        top: 100,
                         right: 10,
                         zIndex: 9999,
                         color: 'white'
