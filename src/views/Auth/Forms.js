@@ -6,13 +6,9 @@ import icon from '../../img/search.svg'
 
 const style = {
     buttonLogin: {
-        width: '103px',
-        margin: 10
-    },
-    buttonLoginByGoogle: {
         width: '226px',
         margin: 10
-    }
+    },
 }
 
 const Forms = (props) => (
@@ -20,23 +16,20 @@ const Forms = (props) => (
         <div>
             <Input
                 hintText='Email'
+                onChange={props.valueLoginInput}
             />
         </div>
         <div>
             <Input
                 hintText='Password'
                 type='Password'
+                onChange={props.valuePasswordInput}
             />
         </div>
         <div>
             <Button
                 label='Login'
                 onClick={props.onClickLoginButton}
-                style={style.buttonLogin}
-            />
-            <Button
-                label='Sign in'
-                onClick={props.onClickSingInButton}
                 style={style.buttonLogin}
             />
         </div>
@@ -46,7 +39,7 @@ const Forms = (props) => (
                 backgroundColor={'white'}
                 labelColor={'#212121'}
                 onClick={props.onClickLoginByGoogleButton}
-                style={style.buttonLoginByGoogle}
+                style={style.buttonLogin}
                 icon={
                     <img
                         src={icon}

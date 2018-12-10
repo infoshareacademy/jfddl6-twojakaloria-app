@@ -7,14 +7,22 @@ const INITIAL_STATE = {
 }
 
 export const startSyncingProductsFromDbAsyncAction = () => (dispatch, getState) => {
-    database.ref(`/products`).on(
+
+    const uuid = getState().auth.user.uid
+
+    database.ref(`products`).on(
         'value',
         snapshot => {
-            const array = Object.entries(snapshot.val())
-            const productList = array.map(entry => ({
-                ...entry[1]
-            }))
-            dispatch(setDataAction(productList))
+            if (snapshot.val()) {
+
+                const array = Object.entries(snapshot.val())
+                const productList = array.map(entry => ({
+                    ...entry[1]
+                }))
+                dispatch(setDataAction(productList))
+            } else {
+                dispatch(setDataAction(null))
+            }
         }
     )
 }
@@ -24,7 +32,11 @@ export const stopSyncingProductsFromDbAsyncAction = () => (dispatch, getState) =
 }
 
 export const addProductToBreakFast = () => (dispatch, getState) => {
-    
+
+
+    database.ref(`users/products/breakfast`).push({
+        dupa: 0
+    })
 }
 
 const setDataAction = data => ({

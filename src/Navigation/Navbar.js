@@ -1,7 +1,8 @@
 import React from 'react'
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer'
-import FlatButton from 'material-ui/FlatButton'
+import IconButton from 'material-ui/IconButton'
+import ActionGrade from 'material-ui/svg-icons/action/grade'
 import { Link } from 'react-router-dom'
 
 class Navbar extends React.Component {
@@ -17,10 +18,14 @@ class Navbar extends React.Component {
                     onLeftIconButtonClick={this.toggleDrawer}
                     iconClassNameRight="muidocs-icon-navigation-expand-more"
                     iconElementRight={
-                        <FlatButton
-                            label="Add food"
-                            href="/addfood"
-                        />
+                        <Link
+                            to="/addfood"
+                        >
+                            <IconButton
+                            >
+                                <ActionGrade />
+                            </IconButton>
+                        </Link>
                     }
                 />
                 <Drawer

@@ -6,7 +6,9 @@ import IconCircle from 'material-ui/svg-icons/action/check-circle'
 
 import { connect } from 'react-redux'
 import { startSyncingProductsFromDbAsyncAction, 
-    stopSyncingProductsFromDbAsyncAction } from '../state/listFood'
+    stopSyncingProductsFromDbAsyncAction,
+    addProductToBreakFast
+ } from '../state/listFood'
 
 
 
@@ -17,54 +19,45 @@ const style = {
     }
 }
 
-class ListFood extends React.Component {
+const ListFood = (props) => (
+     
+        <Paper
+            style={style.paper}
+        >
+            <div>
 
-    componentDidMount() {
-        console.log(this.props._products)
-        this.props._startSyncingProductsFromDbAsyncAction()
-    }
-
-    componentWillUnmount() {
-        this.props._stopSyncingProductsFromDbAsyncAction()
-    }
-
-
-    render() {
-        return (
-            <Paper
-                style={style.paper}
-            >
+                <h1>Choose food</h1>
                 <div>
+                    {props._products &&
+                        props._products.map ?
+                        props._products.map(product => (
+                            <ListItem
+                                rightIconButton={
+                                    <IconButton
+                                    onClick={props._addProductToBreakFast}
+                                    >
 
-                    <h1>Choose food</h1>
-                    <div>
-                        {this.props._products &&
-                            this.props._products.map ?
-                            this.props._products.map(product => (
-                                <ListItem
-                                    rightIconButton={
-                                        <IconButton
-                                        onClick={() => alert('Dodano')}
-                                        >
-
-                                            <IconCircle/>
-                                        </IconButton>
-                                        
-                                    }
-                                >
-                                    {product.name}
-                                </ListItem>
-                            ))
-                            :
-                            'Error!'
-                        }
-                    </div>
+                                        <IconCircle/>
+                                    </IconButton>
+                                    
+                                }
+                            >
+                                {product.name}
+                            </ListItem>
+                        ))
+                        :
+                        'Error!'
+                    }
                 </div>
-            </Paper>
+            </div>
+        </Paper>
 
-        )
-    }
-}
+    
+) 
+
+
+
+
 
 
 const mapStateToProps = state => ({
@@ -72,8 +65,8 @@ const mapStateToProps = state => ({
 })
 
 const dispatchPropsToState = dispatch => ({
-    _startSyncingProductsFromDbAsyncAction: () => dispatch(startSyncingProductsFromDbAsyncAction()),
-    _stopSyncingProductsFromDbAsyncAction: () => dispatch(stopSyncingProductsFromDbAsyncAction())
+  
+    _addProductToBreakFast: () => dispatch(addProductToBreakFast())
 })
 
 

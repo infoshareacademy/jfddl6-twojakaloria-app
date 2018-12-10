@@ -11,9 +11,9 @@ import { store } from './store'
 ReactDOM.render(
     <Provider store={store}>
         <MuiThemeProvider>
-            {/* <Auth > */}
-            <App />
-            {/* </Auth> */}
+            <Auth>
+                <App />
+            </Auth>
         </MuiThemeProvider>
     </Provider>,
     document.getElementById('root')
