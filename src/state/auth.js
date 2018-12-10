@@ -26,6 +26,16 @@ export const initAuthChangeAsyncAction = () => (dispatch, getState) => {
     )
 }
 
+export const remindPassword = () => (dispatch, getState) => {
+    const {auth: {email}} = getState()
+    console.log(email)
+    auth.sendPasswordResetEmail(email).then(function() {
+        'Email send'
+      }).catch(function(error) {
+       'Email is incorrect'
+      });
+}
+
 export const logInAsyncAction = () => (dispatch, getState) => {
     const { auth: { email, password } } = getState()
     auth.signInWithEmailAndPassword(email, password)
@@ -33,6 +43,7 @@ export const logInAsyncAction = () => (dispatch, getState) => {
             alert(`Email or password is incorrect. If you are not registered, do it!`)
         })
 }
+
 const saveLogInTimestampAsyncAction = () => (dispatch, getState) => {
     database.ref('loginLogs').push({
         timestamp: Date.now()

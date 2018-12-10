@@ -9,7 +9,8 @@ import {
     logOutAsyncAction,
     emailOnChange,
     passwordOnChange,
-    logInAsyncAction
+    logInAsyncAction,
+    remindPassword
 } from '../../state/auth'
 import Register from '../Register'
 
@@ -59,10 +60,11 @@ class Auth extends React.Component {
                     <Forms
                         labelStyle={style.label}
                         onClickLoginButton={this.props._logInAsyncAction}
-                        onClickSingInButton={() => { }}
                         onClickLoginByGoogleButton={this.props._onClickLoginByGoogle}
+                        onClickForgotButton={this.props._remindPassword}
                         valueLoginInput={this.props._emailOnChange}
                         valuePasswordInput={this.props._passwordOnChange}
+
                     />
                 </Paper>
 
@@ -85,7 +87,8 @@ const mapDispatchToProps = dispatch => ({
     _logOutAsyncAction: () => dispatch(logOutAsyncAction()),
     _initAuthChangeAsyncAction: () => dispatch(initAuthChangeAsyncAction()),
     _emailOnChange: (event) => dispatch(emailOnChange(event.target.value)),
-    _passwordOnChange: (event) => dispatch(passwordOnChange(event.target.value))
+    _passwordOnChange: (event) => dispatch(passwordOnChange(event.target.value)),
+    _remindPassword: () => dispatch(remindPassword())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Auth)
