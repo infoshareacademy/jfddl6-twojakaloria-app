@@ -16,10 +16,12 @@ const INITIAL_STATE = {
 export const initAuthChangeAsyncAction = () => (dispatch, getState) => {
     auth.onAuthStateChanged(
         user => {
-            (user) ?
-                dispatch(logInAction())
-                :
+            if (user) {
+                dispatch(logInAction(user))
+                dispatch(saveLogInTimestampAsyncAction())
+            }else{
                 dispatch(logOutAction())
+            }
         }
     )
 }
@@ -31,7 +33,11 @@ export const logInAsyncAction = () => (dispatch, getState) => {
             alert(`Email or password is incorrect. If you are not registered, do it!`)
         })
 }
-
+const saveLogInTimestampAsyncAction = () => (dispatch, getState) => {
+    database.ref('loginLogs').push({
+        timestamp: Date.now()
+    })
+}
 export const logOutAsyncAction = () => (dispatch, getState) => {
     auth.signOut()
 }
