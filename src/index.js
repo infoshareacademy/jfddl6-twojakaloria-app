@@ -5,15 +5,16 @@ import App from './App';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import Auth from './views/Auth'
 import { Provider } from 'react-redux'
-import { store } from './store';
+
+import { store } from './store'
 
 ReactDOM.render(
     <Provider store={store}>
         <MuiThemeProvider>
-            <Auth >
+            <Auth>
                 <App />
             </Auth>
         </MuiThemeProvider>
-    </Provider >,
+    </Provider>,
     document.getElementById('root')
 )

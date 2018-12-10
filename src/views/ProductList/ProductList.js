@@ -14,7 +14,7 @@ const styles = {
         padding: 30
     }
 }
-const API_URL = 'https://twoja-kaloria.firebaseio.com/products'
+const API_URL = 'https://twoja-kaloria.firebaseio.com/'
 class ProductList extends React.Component {
     state = {
         tasks: []
@@ -23,7 +23,7 @@ class ProductList extends React.Component {
         this.loadData()
     }
     loadData = () => {
-        fetch(`${API_URL}.json`)
+        fetch(`${API_URL}/products.json`)
             .then(response => response.json())
             .then(data => {
                 if (!data) {
@@ -39,16 +39,24 @@ class ProductList extends React.Component {
             })
     }
     isFavorite = (product) => {
-        fetch(`${API_URL}/${product.id}.json`, {
+        fetch(`${API_URL}products/${product.id}.json`, {
             method: 'PATCH',
             body: JSON.stringify({ isFavorite: !product.isFavorite })
         }).then(() => this.loadData())
     }
     deleteTask = (task) => {
-        fetch(`${API_URL}/${task.id}.json`, {
+        fetch(`${API_URL}products/${task.id}.json`, {
             method: 'DELETE'
         }).then(() => this.loadData())
     }
+
+    addFoodToList = product => {
+        fetch(`${API_URL}users/sniadanie/${product.id}.json`, {
+            method: 'PUT',
+            body: JSON.stringify({product})
+        })
+    }
+
     render() {
         return (
             <Paper style={styles.paper}>
@@ -62,6 +70,7 @@ class ProductList extends React.Component {
                             primaryText={product.name}
                             rightIconButton={
                                 <div>
+                                   
                                     <IconButton>
                                         <Link to={`/product/${product.id}`}>
                                             <DetailsIcon />

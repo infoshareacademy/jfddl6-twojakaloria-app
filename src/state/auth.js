@@ -1,5 +1,6 @@
 import { auth, googleProvider, database } from '../firebase'
-import React from 'react'
+
+import { startSyncingProductsFromDbAsyncAction } from './listFood'
 
 const LOG_IN = 'auth/LOG_IN'
 const LOG_OUT = 'auth/LOG_OUT'
@@ -19,6 +20,7 @@ export const initAuthChangeAsyncAction = () => (dispatch, getState) => {
             if (user) {
                 dispatch(logInAction(user))
                 dispatch(saveLogInTimestampAsyncAction())
+                dispatch(startSyncingProductsFromDbAsyncAction())
             }else{
                 dispatch(logOutAction())
             }
@@ -70,12 +72,14 @@ export default (state = INITIAL_STATE, action) => {
         case LOG_IN:
             return {
                 ...state,
-                isLoggedUser: true
+                isLoggedUser: true,
+                user: action.user
             }
         case LOG_OUT:
             return {
                 ...state,
-                isLoggedUser: false
+                isLoggedUser: false,
+                user: null
             }
         case EMAIL:
             return {

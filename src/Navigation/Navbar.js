@@ -1,6 +1,9 @@
 import React from 'react'
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer'
+import IconButton from 'material-ui/IconButton'
+import ActionGrade from 'material-ui/svg-icons/action/grade'
+import { Link } from 'react-router-dom'
 
 class Navbar extends React.Component {
     state = {
@@ -14,6 +17,16 @@ class Navbar extends React.Component {
                     title={this.props.label ? this.props.label : 'Twoja Kaloria'}
                     onLeftIconButtonClick={this.toggleDrawer}
                     iconClassNameRight="muidocs-icon-navigation-expand-more"
+                    iconElementRight={
+                        <Link
+                            to="/addfood"
+                        >
+                            <IconButton
+                            >
+                                <ActionGrade />
+                            </IconButton>
+                        </Link>
+                    }
                 />
                 <Drawer
                     docked={false}

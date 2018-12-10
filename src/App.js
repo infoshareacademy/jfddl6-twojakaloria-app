@@ -7,10 +7,12 @@ import DashboardView from './views/DashboardView/DashboardView'
 import Product from './views/Product/Product'
 import FavouriteList from './views/FavouriteList/FavouriteList'
 import ProductList from './views/ProductList/ProductList'
+import AddFood from './components/AddFood'
+import ListFood from './components/ListFood'
 
 import Search from './views/Search/Search'
 import AddProduct from './views/AddProduct/AddProduct'
-import Statement from './componenets/Statement'
+import Statement from './components/Statement'
 
 const style = {
   links: {
@@ -99,6 +101,8 @@ class RouterTK extends React.PureComponent {
             <Route path="/favouritelist" component={FavouriteList}></Route>
             <Route path="/addproduct" component={() => <AddProduct toggleStatement={this.props.toggleStatement} />}></Route>
             <Route path='/search' component={Search}></Route>
+            <Route path='/addfood' component={AddFood}></Route>
+            <Route path='/addfoodlist' component={ListFood}></Route>
           </div>
         </div>
       </Router>
