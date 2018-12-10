@@ -35,6 +35,13 @@ const Forms = (props) => (
         </div>
         <div>
             <Button
+                label='Forgot password'
+                onClick={props.onClickForgotButton}
+                style={style.buttonLogin}
+            />
+        </div>
+        <div>
+            <Button
                 label='Login by Google'
                 backgroundColor={'white'}
                 labelColor={'#212121'}
