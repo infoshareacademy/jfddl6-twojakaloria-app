@@ -1,5 +1,8 @@
 import React from 'react'
 import Paper from 'material-ui/Paper'
+import { ListItem } from 'material-ui/List'
+import IconButton from 'material-ui/IconButton'
+import IconCircle from 'material-ui/svg-icons/action/check-circle'
 
 import { connect } from 'react-redux'
 import { startSyncingProductsFromDbAsyncAction, 
@@ -38,7 +41,19 @@ class ListFood extends React.Component {
                         {this.props._products &&
                             this.props._products.map ?
                             this.props._products.map(product => (
-                                <div>{product.category}</div>
+                                <ListItem
+                                    rightIconButton={
+                                        <IconButton
+                                        onClick={() => alert('Dodano')}
+                                        >
+
+                                            <IconCircle/>
+                                        </IconButton>
+                                        
+                                    }
+                                >
+                                    {product.name}
+                                </ListItem>
                             ))
                             :
                             'Error!'

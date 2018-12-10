@@ -23,6 +23,10 @@ export const stopSyncingProductsFromDbAsyncAction = () => (dispatch, getState) =
     database.ref(`/products`).off()
 }
 
+export const addProductToBreakFast = () => (dispatch, getState) => {
+    
+}
+
 const setDataAction = data => ({
     type: SET_DATA,
     data
