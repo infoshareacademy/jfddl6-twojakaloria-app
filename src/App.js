@@ -102,7 +102,9 @@ class RouterTK extends React.PureComponent {
             <Route path="/addproduct" component={() => <AddProduct toggleStatement={this.props.toggleStatement} />}></Route>
             <Route path='/search' component={Search}></Route>
             <Route path='/addfood' component={AddFood}></Route>
-            <Route path='/addfoodlist' component={ListFood}></Route>
+            <Route path='/breakfast/addfoodlist' component={ListFood}></Route>
+            <Route path='/dinner/addfoodlist' component={ListFood}></Route>
+            <Route path='/supper/addfoodlist' component={ListFood}></Route>
           </div>
         </div>
       </Router>

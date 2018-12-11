@@ -1,14 +1,10 @@
 import React from 'react'
 import Paper from 'material-ui/Paper'
 import { ListItem } from 'material-ui/List'
-import ActionFavorite from 'material-ui/svg-icons/action/favorite';
+import { Link } from 'react-router-dom'
 import RaisedButton from 'material-ui/RaisedButton';
-import IconButton from 'material-ui/IconButton'
-import DeleteIcon from 'material-ui/svg-icons/action/delete'
-import DetailsIcon from 'material-ui/svg-icons/action/assignment'
 
 import { connect } from 'react-redux'
-import usersFoodPlan from '../state/usersFoodPlan';
 
 const style = {
     paper: {
@@ -34,11 +30,11 @@ class AddFood extends React.Component {
 
     render() {
         const chosenInBreakfast = Object.keys((this.props._meals && this.props._meals.breakfast) || {})
-        const breakfastMels = this.props._products.filter(
+        const breakfastMeals = this.props._products.filter(
             product => chosenInBreakfast.includes(product.key)
         )
-        console.log(breakfastMels)
-
+        console.log(breakfastMeals)
+        console.log(chosenInBreakfast)
         return (
             <Paper
                 style={style.paper}
@@ -51,150 +47,61 @@ class AddFood extends React.Component {
                     style={style.paperList}
                     zDepth={2}
                 >
-                    <h2>Śniadanie</h2>
-                    <ListItem
-                        key="Produkt"
-                        primaryText="Produkt"
-                        rightIconButton={
-                            <div>
-                                <IconButton>
-                                    {/* <Link to={`/product/${product.id}`}> */}
-                                    <DetailsIcon />
-                                    {/* </Link> */}
-                                </IconButton>
-                                <IconButton>
-                                    <DeleteIcon
-                                    // onClick={(event) => {
-                                    //     event.preventDefault()
-                                    //     this.deleteTask(product)
-                                    // }
-                                    //}
-                                    />
-                                </IconButton>
-                                <IconButton
-                                // onClick={(event) => {
-                                //     event.preventDefault()
-                                //     this.isFavorite(product)
-                                // }
-                                // }
-                                >
-                                    {/* {product.isFavorite === true ? */}
-                                    <ActionFavorite />
-                                    {/* :
-                                            <ActionFavoriteBorder />
-                                        } */}
-                                </IconButton>
-                            </div>
-                        }
-                    />
+                   
+                   
+                    <h2>Breakfast</h2>
+                    {
+                        breakfastMeals &&
+                        breakfastMeals.map &&
+                        breakfastMeals.map(meal => (
+                            <div>{meal.name}</div>
+                        ))
+                    }
+                    
                     <div
                         style={style.addButton}
                     >
-                        <RaisedButton
-                            label="Add product!"
-                            primary={true}
-                            href="/addfoodlist"
-                        />
+
+                        <Link to="/breakfast/addfoodlist">
+                            <RaisedButton
+                                label="Add product!"
+                                primary={true}
+                            />
+                        </Link>
                     </div>
                 </Paper>
                 <Paper
                     style={style.paperList}
                     zDepth={2}
                 >
-                    <h2>Śniadanie</h2>
-                    <ListItem
-                        key="Produkt"
-                        primaryText="Produkt"
-                        rightIconButton={
-                            <div>
-                                <IconButton>
-                                    {/* <Link to={`/product/${product.id}`}> */}
-                                    <DetailsIcon />
-                                    {/* </Link> */}
-                                </IconButton>
-                                <IconButton>
-                                    <DeleteIcon
-                                    // onClick={(event) => {
-                                    //     event.preventDefault()
-                                    //     this.deleteTask(product)
-                                    // }
-                                    //}
-                                    />
-                                </IconButton>
-                                <IconButton
-                                // onClick={(event) => {
-                                //     event.preventDefault()
-                                //     this.isFavorite(product)
-                                // }
-                                // }
-                                >
-                                    {/* {product.isFavorite === true ? */}
-                                    <ActionFavorite />
-                                    {/* :
-                                            <ActionFavoriteBorder />
-                                        } */}
-                                </IconButton>
-                            </div>
-                        }
-                    />
+                    <h2>Dinner</h2>
+                    
                     <div
                         style={style.addButton}
                     >
-                        <RaisedButton
-                            label="Add product!"
-                            primary={true}
-                            href="/addfoodlist"
-                        />
+                        <Link to="/dinner/addfoodlist">
+                            <RaisedButton
+                                label="Add product!"
+                                primary={true}
+                            />
+                        </Link>
                     </div>
                 </Paper>
                 <Paper
                     style={style.paperList}
                     zDepth={2}
                 >
-                    <h2>Śniadanie</h2>
-                    <ListItem
-                        key="Produkt"
-                        primaryText="Produkt"
-                        rightIconButton={
-                            <div>
-                                <IconButton>
-                                    {/* <Link to={`/product/${product.id}`}> */}
-                                    <DetailsIcon />
-                                    {/* </Link> */}
-                                </IconButton>
-                                <IconButton>
-                                    <DeleteIcon
-                                    // onClick={(event) => {
-                                    //     event.preventDefault()
-                                    //     this.deleteTask(product)
-                                    // }
-                                    //}
-                                    />
-                                </IconButton>
-                                <IconButton
-                                // onClick={(event) => {
-                                //     event.preventDefault()
-                                //     this.isFavorite(product)
-                                // }
-                                // }
-                                >
-                                    {/* {product.isFavorite === true ? */}
-                                    <ActionFavorite />
-                                    {/* :
-                                            <ActionFavoriteBorder />
-                                        } */}
-                                </IconButton>
-                            </div>
-                        }
-                    />
+                    <h2>Supper</h2>
+                    
                     <div
                         style={style.addButton}
                     >
-                        <RaisedButton
-                            label="Add product!"
-                            primary={true}
-                            href="/addfoodlist"
-                        />
+                        <Link to="/supper/addfoodlist">
+                            <RaisedButton
+                                label="Add product!"
+                                primary={true}
+                            />
+                        </Link>
                     </div>
                 </Paper>
                 <Paper
