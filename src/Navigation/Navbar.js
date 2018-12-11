@@ -21,16 +21,7 @@ class Navbar extends React.Component {
                     onLeftIconButtonClick={this.toggleDrawer}
                     iconElementRight={
                         <div
-                            style={{cursor: 'pointer' }}>
-
-                            <Link
-                                to="/addfood"
-                            >
-                                <IconButton
-                                >
-                                    <ActionGrade />
-                                </IconButton>
-                            </Link>
+                            style={{ marginTop: '50%', cursor: 'pointer' }}>
                             <IconLogout />
                         </div>
                     }

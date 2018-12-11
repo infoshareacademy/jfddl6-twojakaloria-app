@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import MenuItem from 'material-ui/MenuItem'
+import FloatingActionButton from 'material-ui/FloatingActionButton'
+import ContentAdd from 'material-ui/svg-icons/content/add';
 
 import Navbar from './Navigation/Navbar'
 import DashboardView from './views/DashboardView/DashboardView'
@@ -17,6 +19,11 @@ import Statement from './components/Statement'
 const style = {
   links: {
     textDecoration: 'none'
+  },
+  button: {
+    position: 'fixed',
+    right: 20,
+    bottom: 10
   }
 }
 
@@ -102,9 +109,17 @@ class RouterTK extends React.PureComponent {
             <Route path="/addproduct" component={() => <AddProduct toggleStatement={this.props.toggleStatement} />}></Route>
             <Route path='/search' component={Search}></Route>
             <Route path='/addfood' component={AddFood}></Route>
-            <Route path='/breakfast/addfoodlist' component={ListFood}></Route>
-            <Route path='/dinner/addfoodlist' component={ListFood}></Route>
-            <Route path='/supper/addfoodlist' component={ListFood}></Route>
+            <Route path='/addfoodlist/:meal' component={ListFood} />
+            <Link
+              to="/addfood"
+              style={style.links}
+            >
+              <FloatingActionButton
+                style={style.button}
+              >
+                <ContentAdd />
+              </FloatingActionButton>
+            </Link>
           </div>
         </div>
       </Router>

@@ -35,7 +35,7 @@ const ListFood = (props) => (
                             key={product.key}
                             rightIconButton={
                                 <IconButton
-                                    onClick={() => props._addProductToBreakfast(product.key, 'breakfast')}
+                                    onClick={() => props._addProductToBreakfast(product.key, props.match.params.meal)}
                                 >
                                     <IconAdd />
                                 </IconButton>
