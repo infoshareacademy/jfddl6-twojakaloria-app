@@ -36,19 +36,6 @@ class Auth extends React.Component {
     render() {
         return (this.props._isLoggedUser ?
             <div>
-                <FloatingActionButton
-                    style={{
-                        position: 'fixed',
-                        top: 100,
-                        right: 10,
-                        zIndex: 9999,
-                        color: 'white'
-                    }}
-                    secondary={true}
-                    onClick={this.props._logOutAsyncAction}
-                >
-                    X
-              </FloatingActionButton>
                 {this.props.children}
             </div>
             :
