@@ -64,6 +64,8 @@ class Auth extends React.Component {
                         onClickForgotButton={this.props._remindPassword}
                         valueLoginInput={this.props._emailOnChange}
                         valuePasswordInput={this.props._passwordOnChange}
+                        labelLoginInput={this.props._email}
+                        labelPasswordInput={this.props._password}
 
                     />
                 </Paper>
