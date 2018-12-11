@@ -16,8 +16,7 @@ class Navbar extends React.Component {
                 <AppBar
                     title={this.props.label ? this.props.label : 'Twoja Kaloria'}
                     onLeftIconButtonClick={this.toggleDrawer}
-                    iconClassNameRight="muidocs-icon-navigation-expand-more"
-                    iconElementRight={<IconLogout style={{ marginTop: '50%', cursor: 'pointer'}} />}
+                    iconElementRight={<IconLogout style={{ marginTop: '50%', cursor: 'pointer' }} />}
                     onRightIconButtonClick={this.props._logOutAsyncAction}
                 />
                 <Drawer
@@ -32,7 +31,10 @@ class Navbar extends React.Component {
                                 this.props.children.map(child => (
                                     React.cloneElement(
                                         child,
-                                        { onClick: this.toggleDrawer }
+                                        {
+                                            onClick: this.toggleDrawer,
+                                            key: child.props.to
+                                        }
                                     )
                                 ))
                                 :
