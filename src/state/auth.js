@@ -1,5 +1,6 @@
 import { auth, googleProvider, database } from '../firebase'
 import React from 'react'
+import { startSyncingUsersFromDbAsyncAction } from './usersLog'
 
 const LOG_IN = 'auth/LOG_IN'
 const LOG_OUT = 'auth/LOG_OUT'
@@ -19,6 +20,7 @@ export const initAuthChangeAsyncAction = () => (dispatch, getState) => {
             if (user) {
                 dispatch(logInAction(user))
                 dispatch(saveLogInTimestampAsyncAction())
+                dispatch(startSyncingUsersFromDbAsyncAction())
             }else{
                 dispatch(logOutAction())
             }
