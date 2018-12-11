@@ -5,12 +5,7 @@ import IconButton from 'material-ui/IconButton'
 import IconCircle from 'material-ui/svg-icons/action/check-circle'
 
 import { connect } from 'react-redux'
-import {
-    startSyncingProductsFromDbAsyncAction,
-    stopSyncingProductsFromDbAsyncAction,
-    addProductToBreakFast
-} from '../state/listFood'
-
+import { addProductToBreakfast } from '../state/usersFoodPlan'
 
 
 const style = {
@@ -35,9 +30,8 @@ const ListFood = (props) => (
                         <ListItem
                             rightIconButton={
                                 <IconButton
-                                    onClick={props._addProductToBreakFast}
+                                    onClick={() => props._addProductToBreakfast(product.key, 'breakfast')}
                                 >
-
                                     <IconCircle />
                                 </IconButton>
 
@@ -56,20 +50,13 @@ const ListFood = (props) => (
 
 )
 
-
-
-
-
-
 const mapStateToProps = state => ({
     _products: state.listFood.products
 })
 
 const dispatchPropsToState = dispatch => ({
-
-    _addProductToBreakFast: (data) => dispatch(addProductToBreakFast(data))
+    _addProductToBreakfast: (key, meal) => dispatch(addProductToBreakfast(key, meal))
 })
-
 
 export default connect(
     mapStateToProps,

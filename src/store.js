@@ -5,12 +5,14 @@ import register from './state/register'
 
 import addFood from './state/addFood'
 import listFood from './state/listFood'
+import usersFoodPlan from './state/usersFoodPlan'
 
 const reducer = combineReducers({
     addFood,
     listFood,
     register,
-    auth
+    auth,
+    usersFoodPlan
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose

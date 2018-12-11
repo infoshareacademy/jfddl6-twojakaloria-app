@@ -8,6 +8,7 @@ import DeleteIcon from 'material-ui/svg-icons/action/delete'
 import DetailsIcon from 'material-ui/svg-icons/action/assignment'
 
 import { connect } from 'react-redux'
+import usersFoodPlan from '../state/usersFoodPlan';
 
 const style = {
     paper: {
@@ -32,6 +33,12 @@ const style = {
 class AddFood extends React.Component {
 
     render() {
+        const chosenInBreakfast = Object.keys((this.props._meals && this.props._meals.breakfast) || {})
+        const breakfastMels = this.props._products.filter(
+            product => chosenInBreakfast.includes(product.key)
+        )
+        console.log(breakfastMels)
+
         return (
             <Paper
                 style={style.paper}
@@ -203,4 +210,9 @@ class AddFood extends React.Component {
     }
 }
 
-export default connect()(AddFood)
+export default connect(
+    state => ({
+        _meals: state.usersFoodPlan.meals,
+        _products: state.listFood.products,
+    })
+)(AddFood)
