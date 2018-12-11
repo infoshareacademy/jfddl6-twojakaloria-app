@@ -1,51 +1,7 @@
 import React from 'react'
-import { BarChart, CartesianGrid, XAxis, YAxis, Bar } from 'recharts'
+import { BarChart, CartesianGrid, XAxis, YAxis, Bar, Label } from 'recharts'
 
 
-
-const data = [
-    {
-        time: "Poniedziałek",
-        users: 1,
-        fill: "red"
-
-    },
-    {
-        time: "Wtorek",
-        users: 3,
-        fill: "blue"
-
-    }, {
-        time: "Środa",
-        users: 7,
-        fill: "yellow"
-
-    },
-    {
-        time: "Czwartek",
-        users: 1,
-        fill: "green"
-
-    },
-    {
-        time: "Piątek",
-        users: 3,
-        fill: "purple"
-
-    },
-    {
-        time: "Sobota",
-        users: 7,
-        fill: "pink"
-
-    },
-    {
-        time: "Niedziela",
-        users: 7,
-        fill: "black"
-
-    }
-]
 const Chart = (props) => (
     <div>
         <BarChart
@@ -55,13 +11,16 @@ const Chart = (props) => (
                     :
                     props.viewportWidth / 2.5
             }
-            height={500}
-            data={data}
+            height={550}
+            data={props.data}
+            margin={{  bottom: 20 }}
         >
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="time" />
+            <XAxis dataKey="time">
+                <Label value="Days Of Logging " offset={0} position="bottom" />
+            </XAxis>
             <YAxis />
-            <Bar label={true} dataKey="users"  />
+            <Bar  dataKey="users" />
         </BarChart>
     </div>
 );

@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom'
 import PieChart from '../../components/PieChart'
 import BarChart from './BarChart'
 import Paper from 'material-ui/Paper'
+import { connect } from 'react-redux'
+import { throws } from 'assert';
 
 
 const style = {
@@ -65,6 +67,74 @@ class Dashboard extends React.Component {
   }
 
   render() {
+    const now = new Date()
+    const todayMidnightTimestmap = now.getTime()
+      - now.getHours() * 60 * 60 * 1000
+      - now.getMinutes() * 60 * 1000
+      - now.getSeconds() * 1000
+      - now.getMilliseconds()
+
+    const week = {
+      today: todayMidnightTimestmap,
+      day1before: todayMidnightTimestmap - 1 * 24 * 60 * 60 * 1000,
+      day2before: todayMidnightTimestmap - 2 * 24 * 60 * 60 * 1000,
+      day3before: todayMidnightTimestmap - 3 * 24 * 60 * 60 * 1000,
+      day4before: todayMidnightTimestmap - 4 * 24 * 60 * 60 * 1000,
+      day5before: todayMidnightTimestmap - 5 * 24 * 60 * 60 * 1000,
+      day6before: todayMidnightTimestmap - 6 * 24 * 60 * 60 * 1000
+    }
+
+    const numbersOfLogins = {
+      today: this.props._users.filter(timestamp => week.today <= timestamp).length,
+      day1before: this.props._users.filter(timestamp => week.day1before <= timestamp && week.today > timestamp).length,
+      day2before: this.props._users.filter(timestamp => week.day2before <= timestamp && week.day1before > timestamp).length,
+      day3before: this.props._users.filter(timestamp => week.day3before <= timestamp && week.day2before > timestamp).length,
+      day4before: this.props._users.filter(timestamp => week.day4before <= timestamp && week.day3before > timestamp).length,
+      day5before: this.props._users.filter(timestamp => week.day5before <= timestamp && week.day4before > timestamp).length,
+      day6before: this.props._users.filter(timestamp => week.day6before <= timestamp && week.day5before > timestamp).length
+    }
+    
+    const data = [
+      {
+        time: "Today",
+        users: numbersOfLogins.today,
+        fill: "black"
+      },
+      {
+        time: "-1",
+        users: numbersOfLogins.day1before,
+        fill: "pink"
+      },
+      {
+        time: "-2",
+        users: numbersOfLogins.day2before,
+        fill: "purple"
+      },
+      {
+        time: "-3",
+        users: numbersOfLogins.day3before,
+        fill: "green"
+
+      },
+      {
+        time: "-4",
+        users: numbersOfLogins.day4before,
+        fill: "yellow"
+      },
+      {
+        time: "-5",
+        users: numbersOfLogins.day5before,
+        fill: "blue"
+      },
+      {
+        time: "-6",
+        users: numbersOfLogins.day6before,
+        fill: "red"
+
+      },
+    ]
+    console.log(numbersOfLogins)
+
     return (
       <Paper
         style={style.paper} >
@@ -107,6 +177,7 @@ class Dashboard extends React.Component {
               <h1>Liczba użytkowników</h1>
               <Row middle="xs" center='xs'>
                 <BarChart
+                  data={data}
                   viewportWidth={this.state.viewportWidth}
                 />
               </Row>
@@ -126,4 +197,16 @@ class Dashboard extends React.Component {
   }
 }
 
-export default Dashboard
+
+const mapStateToProps = state => ({
+  _users: state.userLog.logs
+})
+
+const dispatchPropsToState = dispatch => ({
+
+})
+
+export default connect(
+  mapStateToProps,
+  dispatchPropsToState
+)(Dashboard)

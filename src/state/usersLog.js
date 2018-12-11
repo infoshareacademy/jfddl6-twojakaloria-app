@@ -1,11 +1,9 @@
 import { database } from '../firebase'
 
-
 const SET_DATA = 'usersLog/SET_DATA'
 
-
 const INITIAL_STATE = {
-    users: []
+    logs: []
 }
 
 export const startSyncingUsersFromDbAsyncAction = () => (dispatch, getState) => {
@@ -15,32 +13,27 @@ export const startSyncingUsersFromDbAsyncAction = () => (dispatch, getState) => 
         snapshot => {
             if (snapshot.val()) {
 
-                const array = Object.entries(snapshot.val())
-                const userLog = array.map(entry => ({
-                    timestamp: entry[1],
-                    key: entry[0]
-                }))
-                dispatch(setDataAction(userLog))
-                console.log(array)
-                console.log(userLog)
+                const array = Object.values(snapshot.val())
+                const logs = array.map(log => log.timestamp)
+                dispatch(setDataAction(logs))
             } else {
                 dispatch(setDataAction(null))
             }
         }
     )
- }
+}
 
+const setDataAction = data => ({
+    type: SET_DATA,
+    data
+})
 
- const setDataAction = data => ({
-     type: SET_DATA,
-     data
- })
 export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case SET_DATA:
             return {
                 ...state,
-                users: action.data
+                logs: action.data
             }
         default:
             return state
