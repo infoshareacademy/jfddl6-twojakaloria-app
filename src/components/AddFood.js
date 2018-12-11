@@ -45,6 +45,23 @@ class AddFood extends React.Component {
             product => chosenInSupper.includes(product.key)
         )
 
+        const mealsPlan = [
+            {
+                mealName: 'Breakfast',
+                meals: breakfastMeals,
+                mealKey: 'breakfast'
+            },
+            {
+                mealName: 'Dinner',
+                meals: dinnerMeals,
+                mealKey: 'dinner'
+            },
+            {
+                mealName: 'Supper',
+                meals: supperMeals,
+                mealKey: 'supper'
+            }
+        ]
 
         return (
             <div>
@@ -55,96 +72,47 @@ class AddFood extends React.Component {
                         style={style.header}
                     >Create your daily plan!</h1>
                 </Paper>
-                <Paper
-                    style={style.paper}
-                    zDepth={2}
-                >
-                    <h2>Breakfast</h2>
-                    {
-                        breakfastMeals &&
-                        breakfastMeals.map &&
-                        breakfastMeals.map(meal => (
-                            <div>
+                {
+                    mealsPlan.map(plan => (
+                        <Paper
+                            style={style.paper}
+                            zDepth={2}
+                        >
+                            <h2>{plan.mealName}</h2>
+                            {
+                                plan.meals &&
+                                plan.meals.map &&
+                                plan.meals.map(meal => (
+                                    <div>
 
-                                <ListItem
-                                    key={meal.key}
-                                    rightIconButton={
-                                        <IconButton
-                                            onClick={() => this.props._deleteProductFromBreakfast(meal.key, 'breakfast')}
-                                        >
-                                            <DeleteIcon />
-                                        </IconButton>
+                                        <ListItem
+                                            key={meal.key}
+                                            rightIconButton={
+                                                <IconButton
+                                                    onClick={() => this.props._deleteProductFromBreakfast(meal.key, plan.mealKey)}
+                                                >
+                                                    <DeleteIcon />
+                                                </IconButton>
 
-                                    }
-                                >{meal.name}</ListItem>
+                                            }
+                                        >{meal.name}</ListItem>
+                                    </div>
+                                ))
+                            }
+                            <div
+                                style={style.addButton}
+                            >
+
+                                <Link to={`/addfoodlist/${plan.mealKey}`}>
+                                    <RaisedButton
+                                        label="Add product!"
+                                        primary={true}
+                                    />
+                                </Link>
                             </div>
-                        ))
-                    }
-                    <div
-                        style={style.addButton}
-                    >
-
-                        <Link to="/addfoodlist/breakfast">
-                            <RaisedButton
-                                label="Add product!"
-                                primary={true}
-                            />
-                        </Link>
-                    </div>
-                </Paper>
-                <Paper
-                    style={style.paper}
-                    zDepth={2}
-                >
-                    <h2>Dinner</h2>
-                    {
-                        dinnerMeals &&
-                        dinnerMeals.map &&
-                        dinnerMeals.map(meal => (
-                            <div>
-
-                                <ListItem
-                                    key={meal.key}
-                                    rightIconButton={
-                                        <IconButton
-                                            onClick={() => this.props._deleteProductFromDinner(meal.key, 'dinner')}
-                                        >
-                                            <DeleteIcon />
-                                        </IconButton>
-
-                                    }
-                                >{meal.name}</ListItem>
-                            </div>
-                        ))
-                    }
-                    <div
-                        style={style.addButton}
-                    >
-                       <Link to="/addfoodlist/dinner">
-                            <RaisedButton
-                                label="Add product!"
-                                primary={true}
-                            />
-                        </Link>
-                    </div>
-                </Paper>
-                <Paper
-                    style={style.paper}
-                    zDepth={2}
-                >
-                    <h2>Supper</h2>
-
-                    <div
-                        style={style.addButton}
-                    >
-                        <Link to="/addfoodlist/supper">
-                            <RaisedButton
-                                label="Add product!"
-                                primary={true}
-                            />
-                        </Link>
-                    </div>
-                </Paper>
+                        </Paper>
+                    ))
+                }
                 <Paper
                     style={style.paper}
                     zDepth={2}
