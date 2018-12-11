@@ -1,6 +1,9 @@
 import React from 'react'
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer'
+import IconLogout from 'material-ui/svg-icons/action/power-settings-new'
+import { connect } from 'react-redux'
+import { logOutAsyncAction } from '../state/auth'
 
 class Navbar extends React.Component {
     state = {
@@ -14,6 +17,8 @@ class Navbar extends React.Component {
                     title={this.props.label ? this.props.label : 'Twoja Kaloria'}
                     onLeftIconButtonClick={this.toggleDrawer}
                     iconClassNameRight="muidocs-icon-navigation-expand-more"
+                    iconElementRight={<IconLogout style={{ marginTop: '50%', cursor: 'pointer'}} />}
+                    onRightIconButtonClick={this.props._logOutAsyncAction}
                 />
                 <Drawer
                     docked={false}
@@ -45,4 +50,8 @@ class Navbar extends React.Component {
     }
 
 }
-export default Navbar
+
+const mapDispatchToProps = dispatch => ({
+    _logOutAsyncAction: () => dispatch(logOutAsyncAction()),
+})
+export default connect(null, mapDispatchToProps)(Navbar)
