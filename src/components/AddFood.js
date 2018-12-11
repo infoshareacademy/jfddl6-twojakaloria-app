@@ -54,7 +54,7 @@ class AddFood extends React.Component {
                         breakfastMeals &&
                         breakfastMeals.map &&
                         breakfastMeals.map(meal => (
-                            <div>{meal.name}</div>
+                            <ListItem>{meal.name}</ListItem>
                         ))
                     }
                     
