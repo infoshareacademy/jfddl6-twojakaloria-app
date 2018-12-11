@@ -68,6 +68,7 @@ class Auth extends React.Component {
                         labelPasswordInput={this.props._password}
 
                     />
+                    <h4>A message with a restarted password will be sent to the Email provided in the Email field</h4>
                 </Paper>
 
                 <Register />
