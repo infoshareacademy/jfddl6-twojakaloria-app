@@ -2,7 +2,6 @@ import React from 'react'
 import Paper from 'material-ui/Paper'
 import Forms from './Forms'
 import { connect } from 'react-redux'
-import FloatingActionButton from 'material-ui/FloatingActionButton'
 import {
     onClickLoginByGoogle,
     initAuthChangeAsyncAction,

@@ -51,6 +51,7 @@ const Forms = (props) => (
                 style={style.buttonLogin}
                 icon={
                     <img
+                        alt='google login icon'
                         src={icon}
                         style={{
                             maxHeight: '100%',

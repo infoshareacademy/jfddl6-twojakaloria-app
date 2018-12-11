@@ -30,7 +30,6 @@ class Dashboard extends React.Component {
   }
 
   resizeListener = () => {
-    console.log(window.innerWidth)
     this.setState({
       viewportWidth: window.innerWidth
     })

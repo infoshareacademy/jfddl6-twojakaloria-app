@@ -1,5 +1,4 @@
 import { auth, googleProvider, database } from '../firebase'
-import React from 'react'
 
 const LOG_IN = 'auth/LOG_IN'
 const LOG_OUT = 'auth/LOG_OUT'
