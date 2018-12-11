@@ -2,14 +2,14 @@ import React from 'react'
 import Paper from 'material-ui/Paper'
 import Forms from './Forms'
 import { connect } from 'react-redux'
-import FloatingActionButton from 'material-ui/FloatingActionButton'
 import {
     onClickLoginByGoogle,
     initAuthChangeAsyncAction,
     logOutAsyncAction,
     emailOnChange,
     passwordOnChange,
-    logInAsyncAction
+    logInAsyncAction,
+    remindPassword
 } from '../../state/auth'
 import Register from '../Register'
 
@@ -35,19 +35,6 @@ class Auth extends React.Component {
     render() {
         return (this.props._isLoggedUser ?
             <div>
-                <FloatingActionButton
-                    style={{
-                        position: 'fixed',
-                        top: 100,
-                        right: 10,
-                        zIndex: 9999,
-                        color: 'white'
-                    }}
-                    secondary={true}
-                    onClick={this.props._logOutAsyncAction}
-                >
-                    X
-              </FloatingActionButton>
                 {this.props.children}
             </div>
             :
@@ -59,11 +46,15 @@ class Auth extends React.Component {
                     <Forms
                         labelStyle={style.label}
                         onClickLoginButton={this.props._logInAsyncAction}
-                        onClickSingInButton={() => { }}
                         onClickLoginByGoogleButton={this.props._onClickLoginByGoogle}
+                        onClickForgotButton={this.props._remindPassword}
                         valueLoginInput={this.props._emailOnChange}
                         valuePasswordInput={this.props._passwordOnChange}
+                        labelLoginInput={this.props._email}
+                        labelPasswordInput={this.props._password}
+
                     />
+                    <h4>A message with a restarted password will be sent to the Email provided in the Email field</h4>
                 </Paper>
 
                 <Register />
@@ -85,7 +76,8 @@ const mapDispatchToProps = dispatch => ({
     _logOutAsyncAction: () => dispatch(logOutAsyncAction()),
     _initAuthChangeAsyncAction: () => dispatch(initAuthChangeAsyncAction()),
     _emailOnChange: (event) => dispatch(emailOnChange(event.target.value)),
-    _passwordOnChange: (event) => dispatch(passwordOnChange(event.target.value))
+    _passwordOnChange: (event) => dispatch(passwordOnChange(event.target.value)),
+    _remindPassword: () => dispatch(remindPassword())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Auth)

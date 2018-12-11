@@ -2,10 +2,6 @@ import React from 'react'
 
 import RaisedButton from 'material-ui/RaisedButton'
 
-const style = {
-    margin: 10
-}
-
 const Button = (props) => (
         <RaisedButton
             label={props.label}

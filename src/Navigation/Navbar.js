@@ -4,6 +4,9 @@ import Drawer from 'material-ui/Drawer'
 import IconButton from 'material-ui/IconButton'
 import ActionGrade from 'material-ui/svg-icons/action/grade'
 import { Link } from 'react-router-dom'
+import IconLogout from 'material-ui/svg-icons/action/power-settings-new'
+import { connect } from 'react-redux'
+import { logOutAsyncAction } from '../state/auth'
 
 class Navbar extends React.Component {
     state = {
@@ -16,17 +19,22 @@ class Navbar extends React.Component {
                 <AppBar
                     title={this.props.label ? this.props.label : 'Twoja Kaloria'}
                     onLeftIconButtonClick={this.toggleDrawer}
-                    iconClassNameRight="muidocs-icon-navigation-expand-more"
                     iconElementRight={
-                        <Link
-                            to="/addfood"
-                        >
-                            <IconButton
+                        <div
+                            style={{cursor: 'pointer' }}>
+
+                            <Link
+                                to="/addfood"
                             >
-                                <ActionGrade />
-                            </IconButton>
-                        </Link>
+                                <IconButton
+                                >
+                                    <ActionGrade />
+                                </IconButton>
+                            </Link>
+                            <IconLogout />
+                        </div>
                     }
+                    onRightIconButtonClick={this.props._logOutAsyncAction}
                 />
                 <Drawer
                     docked={false}
@@ -40,7 +48,10 @@ class Navbar extends React.Component {
                                 this.props.children.map(child => (
                                     React.cloneElement(
                                         child,
-                                        { onClick: this.toggleDrawer }
+                                        {
+                                            onClick: this.toggleDrawer,
+                                            key: child.props.to
+                                        }
                                     )
                                 ))
                                 :
@@ -58,4 +69,8 @@ class Navbar extends React.Component {
     }
 
 }
-export default Navbar
+
+const mapDispatchToProps = dispatch => ({
+    _logOutAsyncAction: () => dispatch(logOutAsyncAction()),
+})
+export default connect(null, mapDispatchToProps)(Navbar)

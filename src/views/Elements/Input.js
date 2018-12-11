@@ -9,6 +9,8 @@ const Input = (props) => (
         onChange={props.onChange}
         style={props.labelStyle}
         type={props.type}
+        floatingLabelText={props.floatingLabelText}
+        label={props.label}
     />
 )
 export default Input

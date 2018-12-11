@@ -12,6 +12,9 @@ const style = {
     margin: 12,
     padding: 12
   },
+  button: {
+    margin: 10,
+  }
 }
 
 class Dashboard extends React.Component {
@@ -27,7 +30,6 @@ class Dashboard extends React.Component {
   }
 
   resizeListener = () => {
-    console.log(window.innerWidth)
     this.setState({
       viewportWidth: window.innerWidth
     })
@@ -39,30 +41,38 @@ class Dashboard extends React.Component {
         style={style.paper}>
         <Grid>
           <Row middle="xs" center='xs'>
-            <Col lg={4}>
+            <Col lg={3}>
               <Link to='/productlist'>
                 <Button
+                  style={style.button}
                   label={'Go to list'}
+                  fullWidth={true}
                 />
               </Link>
             </Col>
-            <Col lg={4}>
+            <Col lg={1} />
+            <Col lg={3}>
               <Link to='/favouritelist'>
                 <Button
+                  style={style.button}
                   label={'Go to favourites'}
+                  fullWidth={true}
                 />
               </Link>
             </Col>
-            <Col lg={4}>
+            <Col lg={1} />
+            <Col lg={3}>
               <Link to='/addproduct'>
                 <Button
+                  style={style.button}
                   label={'Add new item'}
+                  fullWidth={true}
                 />
               </Link>
             </Col>
           </Row>
-          <Row  
-          center='xs'>
+          <Row
+            center='xs'>
             <Col lg={6}>
               <h1>Liczba produktów w bazie</h1>
 

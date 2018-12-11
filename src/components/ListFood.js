@@ -5,7 +5,11 @@ import IconButton from 'material-ui/IconButton'
 import IconAdd from 'material-ui/svg-icons/content/add'
 
 import { connect } from 'react-redux'
-import { addProductToBreakfast } from '../state/usersFoodPlan'
+import { 
+    addProductToBreakfast,
+    addProductToDinner,
+    addProductToSupper
+ } from '../state/usersFoodPlan'
 
 
 const style = {
@@ -56,7 +60,9 @@ const mapStateToProps = state => ({
 })
 
 const dispatchPropsToState = dispatch => ({
-    _addProductToBreakfast: (key, meal) => dispatch(addProductToBreakfast(key, meal))
+    _addProductToBreakfast: (key, meal) => dispatch(addProductToBreakfast(key, meal)),
+    _addProductToDinner: (key, meal) => dispatch(addProductToDinner(key, meal)),
+    _addProductToSupper: (key, meal) => dispatch(addProductToSupper(key, meal))
 })
 
 export default connect(

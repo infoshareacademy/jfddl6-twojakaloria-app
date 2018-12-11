@@ -4,7 +4,6 @@ import ActionFavorite from 'material-ui/svg-icons/action/favorite';
 import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
 import IconButton from 'material-ui/IconButton'
 import DeleteIcon from 'material-ui/svg-icons/action/delete'
-import DetailsIcon from 'material-ui/svg-icons/action/assignment'
 import Paper from 'material-ui/Paper'
 import { Link } from 'react-router-dom'
 
@@ -53,7 +52,7 @@ class ProductList extends React.Component {
     addFoodToList = product => {
         fetch(`${API_URL}users/sniadanie/${product.id}.json`, {
             method: 'PUT',
-            body: JSON.stringify({product})
+            body: JSON.stringify({ product })
         })
     }
 
@@ -64,18 +63,12 @@ class ProductList extends React.Component {
                     <Link
                         to={`/product/${product.id}`}
                         style={{ textDecoration: 'none' }}
+                        key={product.name}
                     >
                         <ListItem
-                            key={product.name}
                             primaryText={product.name}
                             rightIconButton={
                                 <div>
-                                   
-                                    <IconButton>
-                                        <Link to={`/product/${product.id}`}>
-                                            <DetailsIcon />
-                                        </Link>
-                                    </IconButton>
                                     <IconButton>
                                         <DeleteIcon
                                             onClick={(event) => {

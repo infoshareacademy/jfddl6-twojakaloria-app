@@ -51,7 +51,7 @@ class Task extends React.Component {
                 .filter((product) => unifyString(product.name)
                     .includes(
                         unifyString(this.props.name)))
-                .filter((product) => this.props.kcal != -1 ? (product.kcal <= this.props.kcal) : product)
+                .filter((product) => this.props.kcal !== -1 ? (product.kcal <= this.props.kcal) : product)
                 .filter((product) => (unifyString(product.category)
                     .includes(
                         unifyString(this.props.category))))
