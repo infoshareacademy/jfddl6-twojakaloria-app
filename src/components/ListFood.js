@@ -2,7 +2,7 @@ import React from 'react'
 import Paper from 'material-ui/Paper'
 import { ListItem } from 'material-ui/List'
 import IconButton from 'material-ui/IconButton'
-import IconCircle from 'material-ui/svg-icons/action/check-circle'
+import IconAdd from 'material-ui/svg-icons/content/add'
 
 import { connect } from 'react-redux'
 import { addProductToBreakfast } from '../state/usersFoodPlan'
@@ -28,11 +28,12 @@ const ListFood = (props) => (
                     props._products.map ?
                     props._products.map(product => (
                         <ListItem
+                            key={product.key}
                             rightIconButton={
                                 <IconButton
                                     onClick={() => props._addProductToBreakfast(product.key, 'breakfast')}
                                 >
-                                    <IconCircle />
+                                    <IconAdd />
                                 </IconButton>
 
                             }

@@ -29,6 +29,36 @@ export const addProductToBreakfast = (key, meal) => (dispatch, getState) => {
     database.ref(`/users/${uuid}/meals/${meal}/${key}`).set(true)
 }
 
+export const addProductToDinner = (key, meal) => (dispatch, getState) => {
+    const uuid = getState().auth.user.uid
+
+    database.ref(`/users/${uuid}/meals/${meal}/${key}`).set(true)
+}
+
+export const addProductToSupper = (key, meal) => (dispatch, getState) => {
+    const uuid = getState().auth.user.uid
+
+    database.ref(`/users/${uuid}/meals/${meal}/${key}`).set(true)
+}
+
+export const deleteProductFromBreakfast = (key, meal) => (dispatch, getState) => {
+    const uuid = getState().auth.user.uid
+
+    database.ref(`/users/${uuid}/meals/${meal}/${key}`).set(null)
+}
+
+export const deleteProductFromDinner = (key, meal) => (dispatch, getState) => {
+    const uuid = getState().auth.user.uid
+
+    database.ref(`/users/${uuid}/meals/${meal}/${key}`).set(null)
+}
+
+export const deleteProductFromSupper = (key, meal) => (dispatch, getState) => {
+    const uuid = getState().auth.user.uid
+
+    database.ref(`/users/${uuid}/meals/${meal}/${key}`).set(null)
+}
+
 const setDataAction = data => ({
     type: SET_DATA,
     data

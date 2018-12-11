@@ -2,7 +2,9 @@ import React from 'react'
 import Paper from 'material-ui/Paper'
 import { ListItem } from 'material-ui/List'
 import { Link } from 'react-router-dom'
-import RaisedButton from 'material-ui/RaisedButton';
+import RaisedButton from 'material-ui/RaisedButton'
+
+import { deleteProductFromBreakfast } from '../state/usersFoodPlan'
 
 import { connect } from 'react-redux'
 
@@ -33,8 +35,18 @@ class AddFood extends React.Component {
         const breakfastMeals = this.props._products.filter(
             product => chosenInBreakfast.includes(product.key)
         )
-        console.log(breakfastMeals)
-        console.log(chosenInBreakfast)
+
+        // const chosenInDinner = Object.keys((this.props._meals && this.props._meals.dinner) || {})
+        // const breakfastMeals = this.props._products.filter(
+        //     product => chosenInDinner.includes(product.key)
+        // )
+
+        // const chosenInBreakfast = Object.keys((this.props._meals && this.props._meals.breakfast) || {})
+        // const breakfastMeals = this.props._products.filter(
+        //     product => chosenInBreakfast.includes(product.key)
+        // )
+        
+
         return (
             <Paper
                 style={style.paper}
@@ -47,17 +59,22 @@ class AddFood extends React.Component {
                     style={style.paperList}
                     zDepth={2}
                 >
-                   
-                   
                     <h2>Breakfast</h2>
                     {
                         breakfastMeals &&
                         breakfastMeals.map &&
                         breakfastMeals.map(meal => (
-                            <ListItem>{meal.name}</ListItem>
+                            <div>
+
+                                <ListItem
+                                    key={meal.key}
+                                >{meal.name}</ListItem>
+                                <button
+                                    onClick={() => this.props._deleteProductFromBreakfast(meal.key, 'breakfast')}
+                                >X</button>
+                            </div>
                         ))
                     }
-                    
                     <div
                         style={style.addButton}
                     >
@@ -117,9 +134,14 @@ class AddFood extends React.Component {
     }
 }
 
+const mapDispatchToProps = dispatch => ({
+    _deleteProductFromBreakfast: (key, meal) => dispatch(deleteProductFromBreakfast(key, meal))
+})
+
 export default connect(
     state => ({
         _meals: state.usersFoodPlan.meals,
         _products: state.listFood.products,
-    })
+    }),
+    mapDispatchToProps
 )(AddFood)
