@@ -93,7 +93,7 @@ class Dashboard extends React.Component {
       day5before: this.props._users.filter(timestamp => week.day5before <= timestamp && week.day4before > timestamp).length,
       day6before: this.props._users.filter(timestamp => week.day6before <= timestamp && week.day5before > timestamp).length
     }
-    
+
     const data = [
       {
         time: "Today",
@@ -133,8 +133,7 @@ class Dashboard extends React.Component {
 
       },
     ]
-    console.log(numbersOfLogins)
-
+    // console.log(numbersOfLogins)
     return (
       <Paper
         style={style.paper} >
