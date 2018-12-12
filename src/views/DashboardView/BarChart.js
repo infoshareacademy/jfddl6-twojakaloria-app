@@ -12,14 +12,14 @@ const Chart = (props) => (
             }
             height={550}
             data={props.data}
-            margin={{  bottom: 20 }}
+            margin={{ bottom: 20 }}
         >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="time">
                 <Label value="Days Of Logging " offset={0} position="bottom" />
             </XAxis>
             <YAxis />
-            <Bar  dataKey="users" />
+            <Bar dataKey="users" />
         </BarChart>
     </div>
 )

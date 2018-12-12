@@ -1,7 +1,6 @@
 import React from "react";
 import { PieChart, Pie, Tooltip } from "recharts";
 
-
 const Chart = (props) => {
     const calculatedSize = props.width
         ||
@@ -11,7 +10,7 @@ const Chart = (props) => {
                 :
                 props.viewportWidth / 2.5
         )
-        const size = Math.min(calculatedSize, 500);
+    const size = Math.min(calculatedSize, 500);
     return (
         <div>
             <PieChart width={size} height={size}>
@@ -21,5 +20,4 @@ const Chart = (props) => {
         </div>
     )
 }
-
 export default Chart

@@ -163,7 +163,7 @@ class Dashboard extends React.Component {
           <Row
             center='xs'>
             <Col lg={6}>
-              <h1>Liczba produktów w bazie</h1>
+              <h1>Number of products</h1>
               <Row middle="xs" center='xs'>
                 <PieChart
                   data={this.state.data}
@@ -172,7 +172,7 @@ class Dashboard extends React.Component {
               </Row>
             </Col>
             <Col lg={6}>
-              <h1>Liczba użytkowników</h1>
+              <h1>Number of users</h1>
               <Row middle="xs" center='xs'>
                 <BarChart
                   data={data}
