@@ -7,7 +7,6 @@ import BarChart from './BarChart'
 import Paper from 'material-ui/Paper'
 import { connect } from 'react-redux'
 
-
 const style = {
   paper: {
     margin: 12,
@@ -17,23 +16,19 @@ const style = {
     margin: 10,
   }
 }
-
 const API_URL = 'https://twoja-kaloria.firebaseio.com/products'
 
 class Dashboard extends React.Component {
   state = {
     viewportWidth: window.innerWidth
   }
-
   componentDidMount() {
     window.addEventListener(
       'resize',
       this.resizeListener
     )
     this.loadData()
-
   }
-
   loadData = () => {
     fetch(`${API_URL}.json`)
       .then(response => response.json())
@@ -58,16 +53,13 @@ class Dashboard extends React.Component {
         this.setState({
           data: pieChartData
         })
-
       })
   }
-
   resizeListener = () => {
     this.setState({
       viewportWidth: window.innerWidth
     })
   }
-
   render() {
     const now = new Date()
     const todayMidnightTimestmap = now.getTime()
@@ -85,7 +77,6 @@ class Dashboard extends React.Component {
       day5before: todayMidnightTimestmap - 5 * 24 * 60 * 60 * 1000,
       day6before: todayMidnightTimestmap - 6 * 24 * 60 * 60 * 1000
     }
-
     const numbersOfLogins = {
       today: this.props._users.filter(timestamp => week.today <= timestamp).length,
       day1before: this.props._users.filter(timestamp => week.day1before <= timestamp && week.today > timestamp).length,
@@ -95,7 +86,6 @@ class Dashboard extends React.Component {
       day5before: this.props._users.filter(timestamp => week.day5before <= timestamp && week.day4before > timestamp).length,
       day6before: this.props._users.filter(timestamp => week.day6before <= timestamp && week.day5before > timestamp).length
     }
-
     const data = [
       {
         time: "Today",
@@ -132,7 +122,6 @@ class Dashboard extends React.Component {
         time: "-6",
         users: numbersOfLogins.day6before,
         fill: "red"
-
       },
     ]
     // console.log(numbersOfLogins)
@@ -194,10 +183,8 @@ class Dashboard extends React.Component {
           </Row>
         </Grid>
       </Paper>
-
     )
   }
-
   componentWillUnmount() {
     window.removeEventListener(
       'resize',
@@ -205,17 +192,9 @@ class Dashboard extends React.Component {
     )
   }
 }
-
-
 const mapStateToProps = state => ({
   _users: state.userLog.logs
 })
-
-const dispatchPropsToState = dispatch => ({
-
-})
-
 export default connect(
-  mapStateToProps,
-  dispatchPropsToState
+  mapStateToProps
 )(Dashboard)

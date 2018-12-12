@@ -1,7 +1,6 @@
 import React from 'react'
 import { BarChart, CartesianGrid, XAxis, YAxis, Bar, Label } from 'recharts'
 
-
 const Chart = (props) => (
     <div>
         <BarChart
@@ -23,5 +22,5 @@ const Chart = (props) => (
             <Bar  dataKey="users" />
         </BarChart>
     </div>
-);
+)
 export default Chart
