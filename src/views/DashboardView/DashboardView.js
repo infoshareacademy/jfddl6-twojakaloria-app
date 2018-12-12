@@ -14,6 +14,9 @@ const style = {
     margin: 12,
     padding: 12
   },
+  button: {
+    margin: 10,
+  }
 }
 
 const API_URL = 'https://twoja-kaloria.firebaseio.com/products'
@@ -139,24 +142,32 @@ class Dashboard extends React.Component {
         style={style.paper} >
         <Grid>
           <Row middle="xs" center='xs'>
-            <Col lg={4}>
+            <Col lg={3}>
               <Link to='/productlist'>
                 <Button
+                  style={style.button}
                   label={'Go to list'}
+                  fullWidth={true}
                 />
               </Link>
             </Col>
-            <Col lg={4}>
+            <Col lg={1} />
+            <Col lg={3}>
               <Link to='/favouritelist'>
                 <Button
+                  style={style.button}
                   label={'Go to favourites'}
+                  fullWidth={true}
                 />
               </Link>
             </Col>
-            <Col lg={4}>
+            <Col lg={1} />
+            <Col lg={3}>
               <Link to='/addproduct'>
                 <Button
+                  style={style.button}
                   label={'Add new item'}
+                  fullWidth={true}
                 />
               </Link>
             </Col>

@@ -15,21 +15,30 @@ const Forms = (props) => (
     <div>
         <div>
             <Input
-                hintText='Email'
+                floatingLabelText='Email'
                 onChange={props.valueLoginInput}
+                value={props.labelLoginInput}
             />
         </div>
         <div>
             <Input
-                hintText='Password'
+                floatingLabelText='Password'
                 type='Password'
                 onChange={props.valuePasswordInput}
+                value={props.labelPasswordInput}
             />
         </div>
         <div>
             <Button
                 label='Login'
                 onClick={props.onClickLoginButton}
+                style={style.buttonLogin}
+            />
+        </div>
+        <div>
+            <Button
+                label='Forgot password'
+                onClick={props.onClickForgotButton}
                 style={style.buttonLogin}
             />
         </div>
@@ -42,6 +51,7 @@ const Forms = (props) => (
                 style={style.buttonLogin}
                 icon={
                     <img
+                        alt='google login icon'
                         src={icon}
                         style={{
                             maxHeight: '100%',

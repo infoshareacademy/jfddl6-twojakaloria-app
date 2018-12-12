@@ -24,18 +24,21 @@ const Register = (props) => (
         <Paper
             style={style.paper}>
             <Input
-                hintText='Email'
+                floatingLabelText='Email'
                 onChange={props._emailChangeAction}
+                value={props._email}
             />
             <Input
-                hintText='Password'
+                floatingLabelText='Password'
                 onChange={props._passwordChangeAction}
                 type='Password'
+                value={props._password}
             />
             <Input
-                hintText='Repeat Password'
+                floatingLabelText='Repeat Password'
                 onChange={props._repeatPasswordChangeAction}
                 type='Password'
+                value={props._repeatPassword}
             />
             <Button
                 label='Sign up'
@@ -49,7 +52,7 @@ const Register = (props) => (
 const mapStateToProps = state => ({
     _email: state.register.email,
     _password: state.register.password,
-    _repeatpassword: state.register.repeatPassword
+    _repeatPassword: state.register.repeatPassword
 })
 const mapDispatchToProps = dispatch => ({
     _emailChangeAction: (event) => dispatch(emailChangeAction(event.target.value)),
