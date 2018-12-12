@@ -6,7 +6,6 @@ import PieChart from '../../components/PieChart'
 import BarChart from './BarChart'
 import Paper from 'material-ui/Paper'
 import { connect } from 'react-redux'
-import { throws } from 'assert';
 
 
 const style = {

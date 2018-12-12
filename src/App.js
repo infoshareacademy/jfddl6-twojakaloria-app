@@ -56,7 +56,7 @@ class RouterTK extends React.PureComponent {
               style={style.links}
             >
               <MenuItem>
-                Dashboard
+                Home
           </MenuItem>
             </Link>
             <Link
@@ -64,7 +64,7 @@ class RouterTK extends React.PureComponent {
               style={style.links}
             >
               <MenuItem>
-                Product List
+                Products List
           </MenuItem>
             </Link>
             <Link
