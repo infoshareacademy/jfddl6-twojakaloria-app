@@ -4,7 +4,6 @@ import ActionFavorite from 'material-ui/svg-icons/action/favorite';
 import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
 import IconButton from 'material-ui/IconButton'
 import DeleteIcon from 'material-ui/svg-icons/action/delete'
-import DetailsIcon from 'material-ui/svg-icons/action/assignment'
 import Paper from 'material-ui/Paper'
 import { Link } from 'react-router-dom'
 
@@ -37,7 +36,6 @@ class FavoriteList extends React.Component {
                     return values
                 })
                 this.setState({ tasks: tasksList })
-                console.log(this.state.tasks)
             })
     }
     isFavorite = (product) => {
@@ -60,39 +58,35 @@ class FavoriteList extends React.Component {
                             <Link
                                 to={`/product/${product.id}`}
                                 style={{ textDecoration: 'none' }}
+                                key={product.name}
                             >
                                 <ListItem
-                                    key={product.name}
                                     primaryText={product.name}
+                                    rightIcon={
+                                        <DeleteIcon
+                                            style={{ zIndex: 9999 }}
+                                            onClick={(event) => {
+                                                event.preventDefault()
+                                                this.deleteTask(product)
+                                            }
+                                            }
+                                        />
+                                    }
                                     rightIconButton={
-                                        <div>
-                                            <IconButton>
-                                                <Link to={`/product/${product.id}`}>
-                                                    <DetailsIcon />
-                                                </Link>
-                                            </IconButton>
-                                            <IconButton>
-                                                <DeleteIcon
-                                                    onClick={(event) => {
-                                                        event.preventDefault()
-                                                        this.deleteTask(product)
-                                                    }
-                                                    }
-                                                />
-                                            </IconButton>
-                                            <IconButton onClick={(event) => {
+                                        <IconButton
+                                            style={{ marginRight: '40px' }}
+                                            onClick={(event) => {
                                                 event.preventDefault()
                                                 this.isFavorite(product)
                                             }
                                             }
-                                            >
-                                                {product.isFavorite === true ?
-                                                    <ActionFavorite />
-                                                    :
-                                                    <ActionFavoriteBorder />
-                                                }
-                                            </IconButton>
-                                        </div>
+                                        >
+                                            {product.isFavorite === true ?
+                                                <ActionFavorite />
+                                                :
+                                                <ActionFavoriteBorder />
+                                            }
+                                        </IconButton>
                                     }
                                 />
                             </Link>

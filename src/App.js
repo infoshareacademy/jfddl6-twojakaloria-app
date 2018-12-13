@@ -3,13 +3,13 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import MenuItem from 'material-ui/MenuItem'
 
 import Navbar from './Navigation/Navbar'
-import DashboardView from './views/DashboardView/DashboardView'
+import DashboardView from './views/DashboardView'
 import Product from './views/Product/Product'
-import FavouriteList from './views/FavouriteList/FavouriteList'
-import ProductList from './views/ProductList/ProductList'
+import FavouriteList from './views/FavouriteList'
+import ProductList from './views/ProductList'
 
-import Search from './views/Search/Search'
-import AddProduct from './views/AddProduct/AddProduct'
+import Search from './views/Search'
+import AddProduct from './views/AddProduct'
 import Statement from './componenets/Statement'
 
 const style = {
