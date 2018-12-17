@@ -5,16 +5,17 @@ import FloatingActionButton from 'material-ui/FloatingActionButton'
 import ContentAdd from 'material-ui/svg-icons/content/add';
 
 import Navbar from './Navigation/Navbar'
-import DashboardView from './views/DashboardView/DashboardView'
+import DashboardView from './views/DashboardView'
 import Product from './views/Product/Product'
-import FavouriteList from './views/FavouriteList/FavouriteList'
-import ProductList from './views/ProductList/ProductList'
 import AddFood from './components/AddFood'
 import ListFood from './components/ListFood'
 
-import Search from './views/Search/Search'
-import AddProduct from './views/AddProduct/AddProduct'
 import Statement from './components/Statement'
+import FavouriteList from './views/FavouriteList'
+import ProductList from './views/ProductList'
+
+import Search from './views/Search'
+import AddProduct from './views/AddProduct'
 
 const style = {
   links: {
@@ -65,15 +66,16 @@ class RouterTK extends React.PureComponent {
               style={style.links}
             >
               <MenuItem>
-                Dashboard
+                Home
           </MenuItem>
+
             </Link>
             <Link
               to='/productlist'
               style={style.links}
             >
               <MenuItem>
-                Product List
+                Products List
           </MenuItem>
             </Link>
             <Link

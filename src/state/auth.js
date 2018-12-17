@@ -1,4 +1,5 @@
 import { auth, googleProvider, database } from '../firebase'
+import { startSyncingUsersFromDbAsyncAction } from './usersLog'
 
 import { startSyncingProductsFromDbAsyncAction, stopSyncingProductsFromDbAsyncAction } from './listFood'
 import { startSyncingUsersMealsFromDbAsyncAction, stopSyncingUsersMealsFromDbAsyncAction } from './usersFoodPlan'
@@ -23,6 +24,7 @@ export const initAuthChangeAsyncAction = () => (dispatch, getState) => {
                 dispatch(saveLogInTimestampAsyncAction())
                 dispatch(startSyncingProductsFromDbAsyncAction())
                 dispatch(startSyncingUsersMealsFromDbAsyncAction())
+                dispatch(startSyncingUsersFromDbAsyncAction())
             }else{
                 dispatch(logOutAction())
                 dispatch(stopSyncingProductsFromDbAsyncAction())

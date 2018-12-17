@@ -67,31 +67,31 @@ class ProductList extends React.Component {
                     >
                         <ListItem
                             primaryText={product.name}
+                            rightIcon={
+                                <DeleteIcon
+                                    style={{ zIndex: 9999 }}
+                                    onClick={(event) => {
+                                        event.preventDefault()
+                                        this.deleteTask(product)
+                                    }
+                                    }
+                                />
+                            }
                             rightIconButton={
-                                <div>
-                                    <IconButton>
-                                        <DeleteIcon
-                                            onClick={(event) => {
-                                                event.preventDefault()
-                                                this.deleteTask(product)
-                                            }
-                                            }
-                                        />
-                                    </IconButton>
-                                    <IconButton
-                                        onClick={(event) => {
-                                            event.preventDefault()
-                                            this.isFavorite(product)
-                                        }
-                                        }
-                                    >
-                                        {product.isFavorite === true ?
-                                            <ActionFavorite />
-                                            :
-                                            <ActionFavoriteBorder />
-                                        }
-                                    </IconButton>
-                                </div>
+                                <IconButton
+                                    style={{ marginRight: '40px' }}
+                                    onClick={(event) => {
+                                        event.preventDefault()
+                                        this.isFavorite(product)
+                                    }
+                                    }
+                                >
+                                    {product.isFavorite === true ?
+                                        <ActionFavorite />
+                                        :
+                                        <ActionFavoriteBorder />
+                                    }
+                                </IconButton>
                             }
                         />
                     </Link>

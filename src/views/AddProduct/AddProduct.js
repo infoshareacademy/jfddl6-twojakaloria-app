@@ -8,7 +8,7 @@ import { Grid, Row } from "react-flexbox-grid";
 
 import './AddProduct.css'
 
-const categories = ["Vegetables", "Fruits", "Drinks", "Meat", "Other"];
+const categories = ["Vegetables", "Fruits", "Drinks", "Meat", "Vegan Food", "Fast Food", "Other" ];
 
 const style = {
   paper: {
