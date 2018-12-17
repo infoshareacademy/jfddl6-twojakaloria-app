@@ -95,7 +95,9 @@ class AddFood extends React.Component {
                                                 </IconButton>
 
                                             }
-                                        >{meal.name}</ListItem>
+                                        >{meal.name}
+                                            {' '}{meal.kcal}{'kcal'}
+                                        </ListItem>
                                     </div>
                                 ))
                             }
