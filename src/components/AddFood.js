@@ -73,33 +73,31 @@ class AddFood extends React.Component {
                     >Create your daily plan!</h1>
                 </Paper>
                 {
-                    mealsPlan.map(plan => (
+                    mealsPlan.map((plan, index) => (
                         <Paper
                             style={style.paper}
                             zDepth={2}
+                            key={index}
                         >
                             <h2>{plan.mealName}</h2>
                             {
                                 plan.meals &&
                                 plan.meals.map &&
                                 plan.meals.map(meal => (
-                                    <div>
+                                    <ListItem
+                                        key={meal.key}
+                                        primaryText={`${meal.name} ${meal.kcal}${'kcal'}`}
+                                        rightIconButton={
+                                            <IconButton
+                                                onClick={() => this.props._deleteProductFromBreakfast(meal.key, plan.mealKey)}
+                                            >
+                                                <DeleteIcon />
+                                            </IconButton>
+                                        }
+                                    />
 
-                                        <ListItem
-                                            key={meal.key}
-                                            rightIconButton={
-                                                <IconButton
-                                                    onClick={() => this.props._deleteProductFromBreakfast(meal.key, plan.mealKey)}
-                                                >
-                                                    <DeleteIcon />
-                                                </IconButton>
-
-                                            }
-                                        >{meal.name}
-                                            {' '}{meal.kcal}{'kcal'}
-                                        </ListItem>
-                                    </div>
                                 ))
+
                             }
                             <div
                                 style={style.addButton}
