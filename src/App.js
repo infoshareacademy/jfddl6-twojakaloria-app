@@ -1,20 +1,30 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import MenuItem from 'material-ui/MenuItem'
+import FloatingActionButton from 'material-ui/FloatingActionButton'
+import ContentAdd from 'material-ui/svg-icons/content/add';
 
 import Navbar from './Navigation/Navbar'
 import DashboardView from './views/DashboardView'
 import Product from './views/Product/Product'
+import AddFood from './components/AddFood'
+import ListFood from './components/ListFood'
+
+import Statement from './components/Statement'
 import FavouriteList from './views/FavouriteList'
 import ProductList from './views/ProductList'
 
 import Search from './views/Search'
 import AddProduct from './views/AddProduct'
-import Statement from './componenets/Statement'
 
 const style = {
   links: {
     textDecoration: 'none'
+  },
+  button: {
+    position: 'fixed',
+    right: 20,
+    bottom: 10
   }
 }
 
@@ -100,6 +110,18 @@ class RouterTK extends React.PureComponent {
             <Route path="/favouritelist" component={FavouriteList}></Route>
             <Route path="/addproduct" component={() => <AddProduct toggleStatement={this.props.toggleStatement} />}></Route>
             <Route path='/search' component={Search}></Route>
+            <Route path='/addfood' component={AddFood}></Route>
+            <Route path='/addfoodlist/:meal' component={ListFood} />
+            <Link
+              to="/addfood"
+              style={style.links}
+            >
+              <FloatingActionButton
+                style={style.button}
+              >
+                <ContentAdd />
+              </FloatingActionButton>
+            </Link>
           </div>
         </div>
       </Router>

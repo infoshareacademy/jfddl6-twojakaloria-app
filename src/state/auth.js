@@ -1,6 +1,9 @@
 import { auth, googleProvider, database } from '../firebase'
 import { startSyncingUsersFromDbAsyncAction } from './usersLog'
 
+import { startSyncingProductsFromDbAsyncAction, stopSyncingProductsFromDbAsyncAction } from './listFood'
+import { startSyncingUsersMealsFromDbAsyncAction, stopSyncingUsersMealsFromDbAsyncAction } from './usersFoodPlan'
+
 const LOG_IN = 'auth/LOG_IN'
 const LOG_OUT = 'auth/LOG_OUT'
 const EMAIL = 'auth/EMAIL'
@@ -19,9 +22,13 @@ export const initAuthChangeAsyncAction = () => (dispatch, getState) => {
             if (user) {
                 dispatch(logInAction(user))
                 dispatch(saveLogInTimestampAsyncAction())
+                dispatch(startSyncingProductsFromDbAsyncAction())
+                dispatch(startSyncingUsersMealsFromDbAsyncAction())
                 dispatch(startSyncingUsersFromDbAsyncAction())
             }else{
                 dispatch(logOutAction())
+                dispatch(stopSyncingProductsFromDbAsyncAction())
+                dispatch(stopSyncingUsersMealsFromDbAsyncAction())
             }
         }
     )
@@ -82,12 +89,14 @@ export default (state = INITIAL_STATE, action) => {
         case LOG_IN:
             return {
                 ...state,
-                isLoggedUser: true
+                isLoggedUser: true,
+                user: action.user
             }
         case LOG_OUT:
             return {
                 ...state,
-                isLoggedUser: false
+                isLoggedUser: false,
+                user: null
             }
         case EMAIL:
             return {

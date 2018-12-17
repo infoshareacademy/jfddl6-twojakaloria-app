@@ -4,9 +4,16 @@ import auth from './state/auth'
 import register from './state/register'
 import userLog from './state/usersLog'
 
+import addFood from './state/addFood'
+import listFood from './state/listFood'
+import usersFoodPlan from './state/usersFoodPlan'
+
 const reducer = combineReducers({
+    addFood,
+    listFood,
     register,
     auth,
+    usersFoodPlan,
     userLog
 })
 

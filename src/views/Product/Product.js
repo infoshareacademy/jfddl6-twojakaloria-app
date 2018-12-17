@@ -144,6 +144,19 @@ class Product extends React.Component {
                         />
                     </div>
                 </Link>
+                <Button
+                    fullWidth
+                    onClick={this.toggleFavorite}
+                    label={
+                        this.state.data ?
+                            this.state.data.isFavorite ?
+                                'remove from favourite'
+                                :
+                                'add to favourite'
+                            :
+                            'Loading'
+                    }
+                />
 
             </Paper>
 

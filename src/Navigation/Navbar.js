@@ -1,6 +1,9 @@
 import React from 'react'
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer'
+import IconButton from 'material-ui/IconButton'
+import ActionGrade from 'material-ui/svg-icons/action/grade'
+import { Link } from 'react-router-dom'
 import IconLogout from 'material-ui/svg-icons/action/power-settings-new'
 import { connect } from 'react-redux'
 import { logOutAsyncAction } from '../state/auth'
@@ -16,7 +19,12 @@ class Navbar extends React.Component {
                 <AppBar
                     title={this.props.label ? this.props.label : 'Twoja Kaloria'}
                     onLeftIconButtonClick={this.toggleDrawer}
-                    iconElementRight={<IconLogout style={{ marginTop: '50%', cursor: 'pointer' }} />}
+                    iconElementRight={
+                        <div
+                            style={{ marginTop: '50%', cursor: 'pointer' }}>
+                            <IconLogout />
+                        </div>
+                    }
                     onRightIconButtonClick={this.props._logOutAsyncAction}
                 />
                 <Drawer
