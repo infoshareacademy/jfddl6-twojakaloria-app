@@ -113,14 +113,7 @@ class AddFood extends React.Component {
                         </Paper>
                     ))
                 }
-                <Paper
-                    style={style.paper}
-                    zDepth={2}
-                >
-                    <div>
-                        Wykresy
-                    </div>
-                </Paper>
+
             </div>
         )
     }
