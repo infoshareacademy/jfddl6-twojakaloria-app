@@ -3,7 +3,6 @@ import { ListItem } from 'material-ui/List'
 import ActionFavorite from 'material-ui/svg-icons/action/favorite';
 import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
 import IconButton from 'material-ui/IconButton'
-import DeleteIcon from 'material-ui/svg-icons/action/delete'
 import Paper from 'material-ui/Paper'
 import { Link } from 'react-router-dom'
 
@@ -67,19 +66,8 @@ class ProductList extends React.Component {
                     >
                         <ListItem
                             primaryText={product.name}
-                            rightIcon={
-                                <DeleteIcon
-                                    style={{ zIndex: 9999 }}
-                                    onClick={(event) => {
-                                        event.preventDefault()
-                                        this.deleteTask(product)
-                                    }
-                                    }
-                                />
-                            }
                             rightIconButton={
                                 <IconButton
-                                    style={{ marginRight: '40px' }}
                                     onClick={(event) => {
                                         event.preventDefault()
                                         this.isFavorite(product)
@@ -102,5 +90,4 @@ class ProductList extends React.Component {
         )
     }
 }
-
 export default ProductList

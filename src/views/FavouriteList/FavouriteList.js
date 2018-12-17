@@ -62,19 +62,8 @@ class FavoriteList extends React.Component {
                             >
                                 <ListItem
                                     primaryText={product.name}
-                                    rightIcon={
-                                        <DeleteIcon
-                                            style={{ zIndex: 9999 }}
-                                            onClick={(event) => {
-                                                event.preventDefault()
-                                                this.deleteTask(product)
-                                            }
-                                            }
-                                        />
-                                    }
                                     rightIconButton={
                                         <IconButton
-                                            style={{ marginRight: '40px' }}
                                             onClick={(event) => {
                                                 event.preventDefault()
                                                 this.isFavorite(product)

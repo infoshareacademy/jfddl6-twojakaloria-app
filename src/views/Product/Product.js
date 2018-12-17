@@ -10,6 +10,13 @@ const style = {
     paper: {
         margin: 12,
         padding: 12
+    },
+    button: {
+        marginTop: 12,
+    },
+    buttonContainer: {
+        maxWidth: "800px",
+        margin: "0 auto"
     }
 }
 
@@ -108,11 +115,34 @@ class Product extends React.Component {
                         </Col>
                     </Row>
                 </Grid>
-                <Link to='/productlist'>
+
+                <div
+                    style={style.buttonContainer}>
                     <Button
-                        label={'back to list'}
+                        style={style.button}
                         fullWidth
+                        onClick={this.toggleFavorite}
+                        label={
+                            this.state.data ?
+                                this.state.data.isFavorite ?
+                                    'remove from favourite'
+                                    :
+                                    'add to favourite'
+                                :
+                                'loading'
+                        }
                     />
+                </div>
+                <Link to='/productlist'>
+                    <div
+                        style={style.buttonContainer}>
+                        <Button
+                            style={style.button}
+
+                            label={'back to list'}
+                            fullWidth
+                        />
+                    </div>
                 </Link>
                 <Button
                     fullWidth
